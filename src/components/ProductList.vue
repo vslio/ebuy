@@ -3,63 +3,37 @@
     <div v-for="product in products" :key="product.id" class="product-item">
       <img :src="product.image" :alt="product.name" class="product-image" />
       <div class="product-details">
-        <h2 class="product-name">{{ product.name }}</h2>
-        <p class="product-price">${{ product.price.toFixed(2) }}</p>
-        <p class="product-description">{{ product.description }}</p>
+        <h3>{{ product.name }}</h3>
+        <p class="product-price">€{{ product.price.toFixed(2) }}</p>
+        <p>{{ product.description }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import type { Product } from '@/services/api/handlers'
+import { ref, onMounted } from 'vue'
 
-type Product = {
-  id: number
-  name: string
-  price: number
-  image: string
-  description: string
+const products = ref<Product[]>([])
+
+const fetchProducts = async () => {
+  try {
+    const response = await fetch('/api/products')
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch products')
+    }
+    const data: Product[] = await response.json()
+    products.value = data
+  } catch (error) {
+    console.error('Error fetching products:', error)
+  }
 }
 
-const products = ref<Product[]>([
-  {
-    id: 1,
-    name: 'Product 1',
-    price: 15,
-    image: 'https://picsum.photos/300/200',
-    description: "This is a random text. Totally the best description text you've never seen."
-  },
-  {
-    id: 2,
-    name: 'Product 2',
-    price: 30,
-    image: 'https://picsum.photos/300/200',
-    description: 'This is another random text, used for description.'
-  },
-  {
-    id: 3,
-    name: 'Product 3',
-    price: 100,
-    image: 'https://picsum.photos/300/200',
-    description: "I'm really smashing it with the descriptions here."
-  },
-  {
-    id: 4,
-    name: 'Product 4',
-    price: 1000,
-    image: 'https://picsum.photos/300/200',
-    description: "I'm really running out of ideas."
-  },
-  {
-    id: 5,
-    name: 'Product 5',
-    price: 1000,
-    image: 'https://picsum.photos/300/200',
-    description:
-      "Use your imagination. Imagine that this is a decent description. It's not, but just try!"
-  }
-])
+onMounted(() => {
+  fetchProducts()
+})
 </script>
 
 <style scoped>
@@ -84,6 +58,10 @@ const products = ref<Product[]>([
   }
 }
 
+h3 {
+  font-weight: bold;
+}
+
 .product-image {
   width: 100%;
   height: 200px;
@@ -95,18 +73,7 @@ const products = ref<Product[]>([
   margin-top: 10px;
 }
 
-.product-name {
-  font-size: 1.2em;
-  margin: 0 0 5px 0;
-}
-
 .product-price {
   font-weight: bold;
-  color: #4caf50;
-}
-
-.product-description {
-  font-size: 0.9em;
-  color: #666;
 }
 </style>
