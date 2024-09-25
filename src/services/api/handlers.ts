@@ -65,7 +65,24 @@ const products: Product[] = [
   }
 ]
 
-const cart: CartItem[] = []
+let cart: CartItem[] = []
+
+function getCartWithProductDetails(): CartItemWithProduct[] {
+  return cart
+    .map((item) => {
+      const product = products.find((p) => p.id === item.productId)
+
+      if (product) {
+        return {
+          product,
+          quantity: item.quantity
+        }
+      }
+
+      return undefined
+    })
+    .filter((item) => item !== undefined)
+}
 
 export const handlers = [
   http.get<never, never, Product[] | ResponseError, '/api/products'>('/api/products', () => {
@@ -89,20 +106,7 @@ export const handlers = [
   http.get<never, never, CartItemWithProduct[] | ResponseError, '/api/cart'>('/api/cart', () => {
     if (!cart.length) return HttpResponse.json([])
 
-    const cartWithProduct = cart
-      .map((item) => {
-        const product = products.find((p) => p.id === item.productId)
-
-        if (product) {
-          return {
-            product,
-            quantity: item.quantity
-          }
-        }
-
-        return undefined
-      })
-      .filter((item) => item !== undefined)
+    const cartWithProduct = getCartWithProductDetails()
 
     return HttpResponse.json(cartWithProduct)
   }),
@@ -133,5 +137,27 @@ export const handlers = [
 
       return HttpResponse.json({ message: 'Product added to cart' })
     }
-  )
+  ),
+
+  http.delete<
+    { productId: string },
+    CartItem[],
+    CartItemWithProduct[] | ResponseError,
+    '/api/cart/:productId'
+  >('/api/cart/:productId', ({ params }) => {
+    const productId = Number(params.productId)
+    const item = cart.find((item) => item.productId === productId)
+    const product = products.find((p) => p.id === productId)
+
+    if (item && product) {
+      product.stock += item.quantity
+      cart = cart.filter((i) => i.productId !== productId)
+
+      const cartWithProduct = getCartWithProductDetails()
+
+      return HttpResponse.json(cartWithProduct)
+    }
+
+    return HttpResponse.json({ error: 'Product not found' }, { status: 404 })
+  })
 ]
