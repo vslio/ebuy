@@ -106,9 +106,8 @@ p {
   margin-top: 0;
 }
 
-.product-image {
+img {
   width: 100%;
-  border-radius: 8px;
 }
 
 .product-info {

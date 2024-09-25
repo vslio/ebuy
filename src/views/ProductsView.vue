@@ -65,9 +65,7 @@ h2 {
   line-height: 1;
 }
 
-.product-image {
-  border-radius: 8px;
+img {
   width: 100%;
-  object-fit: cover;
 }
 </style>
