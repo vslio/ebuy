@@ -63,6 +63,7 @@ h1 {
 
 h2 {
   margin-bottom: 0;
+  line-height: 1;
 }
 
 .emoji {

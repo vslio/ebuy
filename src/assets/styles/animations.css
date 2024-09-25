@@ -14,6 +14,7 @@
     text-decoration-style: wavy;
     text-decoration-color: transparent;
     text-decoration-line: underline;
+    opacity: 0;
     transform: scale(2);
     transform-origin: center;
     transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -23,6 +24,7 @@
   &.active::after,
   &:hover::after {
     text-decoration-color: var(--color-text);
+    opacity: 1;
     transform: scale(1);
     animation: wavy 2s linear infinite;
   }
