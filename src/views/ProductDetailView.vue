@@ -2,6 +2,13 @@
   <div v-if="product" class="product-detail">
     <img :src="`${product.image}/600/600`" :alt="product.name" class="product-image" />
     <div class="product-info">
+      <header>
+        <nav class="in-row">
+          <RouterLink to="/"><h3 class="wavy" data-wavy="Home Home`">Home</h3></RouterLink>
+          <h3>→</h3>
+          <h3>{{ product.name }}</h3>
+        </nav>
+      </header>
       <div>
         <h1>{{ product.name }}</h1>
         <h2>€{{ product.price.toFixed(2) }}</h2>
@@ -81,6 +88,10 @@ onMounted(() => {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
+}
+
+h3 {
+  margin: 0;
 }
 
 h1 {
