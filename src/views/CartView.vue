@@ -157,12 +157,6 @@ td {
   border-bottom: 4px solid var(--color-text);
 }
 
-.in-row {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
 button {
   padding: 0;
   background-color: transparent;
