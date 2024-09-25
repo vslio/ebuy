@@ -1,4 +1,5 @@
 @import './base.css';
+@import './product.css';
 
 #app {
   max-width: 1280px;
@@ -49,4 +50,10 @@ img {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
 }

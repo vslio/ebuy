@@ -1,4 +1,4 @@
-@import './modern-normalize.css';
+@import '../modern-normalize.css';
 
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
