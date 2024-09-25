@@ -19,11 +19,16 @@ a:active {
 
 button {
   padding: 8px 12px;
+  background-color: var(--color-button);
   color: var(--color-button-text);
   font-size: 0.8rem;
   font-weight: bold;
-  background-color: var(--color-button);
   border: none;
   border-radius: 8px;
   cursor: pointer;
+
+  &:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+  }
 }
