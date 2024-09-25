@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import CartIcon from '@/components/icons/CartIcon.vue'
 import SearchIcon from '@/components/icons/SearchIcon.vue'
-import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
@@ -26,15 +25,23 @@ nav {
 }
 
 a {
-  font-weight: 700;
-  font-size: 1.5rem;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+a:not(.logo) {
   transform: scale(1);
   transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 
   &:not(.logo):hover {
     transform: scale(1.15);
   }
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1;
 }
 
 .in-row {
