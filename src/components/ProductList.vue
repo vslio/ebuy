@@ -29,8 +29,7 @@ const fetchProducts = async () => {
       throw new Error('Failed to fetch products')
     }
 
-    const data: Product[] = await response.json()
-    products.value = data
+    products.value = await response.json()
   } catch (error) {
     console.error('Error fetching products ->', error)
   }
