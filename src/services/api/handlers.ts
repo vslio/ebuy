@@ -14,7 +14,7 @@ const products: Product[] = [
     id: 1,
     name: 'Product 1',
     price: 15,
-    image: 'https://picsum.photos/300/200',
+    image: 'https://picsum.photos',
     description: "This is a random text. Totally the best description text you've never seen.",
     stock: 14
   },
@@ -22,7 +22,7 @@ const products: Product[] = [
     id: 2,
     name: 'Product 2',
     price: 30,
-    image: 'https://picsum.photos/300/200',
+    image: 'https://picsum.photos',
     description: 'This is another random text, used for description.',
     stock: 17
   },
@@ -30,7 +30,7 @@ const products: Product[] = [
     id: 3,
     name: 'Product 3',
     price: 100,
-    image: 'https://picsum.photos/300/200',
+    image: 'https://picsum.photos',
     description: "I'm really smashing it with the descriptions here.",
     stock: 2
   },
@@ -38,7 +38,7 @@ const products: Product[] = [
     id: 4,
     name: 'Product 4',
     price: 1000,
-    image: 'https://picsum.photos/300/200',
+    image: 'https://picsum.photos',
     description: "I'm really running out of ideas.",
     stock: 0
   },
@@ -46,7 +46,7 @@ const products: Product[] = [
     id: 5,
     name: 'Product 5',
     price: 1000,
-    image: 'https://picsum.photos/300/200',
+    image: 'https://picsum.photos',
     description:
       "Use your imagination. Imagine that this is a decent description. It's not, but just try!",
     stock: 7
