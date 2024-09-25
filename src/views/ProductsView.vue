@@ -1,21 +1,11 @@
 <template>
-  <div class="product-list">
-    <RouterLink
-      :to="`/product/${product.id}`"
-      v-for="product in products"
-      :key="product.id"
-      class="product-item"
-    >
-      <img :src="`${product.image}/300/300`" :alt="product.name" class="product-image" />
-      <div>
-        <h2>{{ product.name }}</h2>
-        <span class="product-price">€{{ product.price.toFixed(2) }}</span>
-      </div>
-    </RouterLink>
+  <div class="product-grid">
+    <ProductCard v-for="product in products" :key="product.id" :product="product" />
   </div>
 </template>
 
 <script setup lang="ts">
+import ProductCard from '@/components/ProductCard.vue'
 import type { Product } from '@/services/api/handlers'
 import { ref, onMounted } from 'vue'
 
@@ -41,16 +31,10 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.product-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 32px;
-}
-
-.product-item {
+.product-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  align-items: flex-start;
 }
 
 h2 {
