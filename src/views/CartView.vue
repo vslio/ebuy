@@ -12,10 +12,15 @@
       <tbody>
         <tr v-for="item in cart" :key="item.product.id" class="cart-item">
           <td>
-            <RouterLink :to="`/product/${item.product.id}`" class="product-info">
-              <img :src="`${item.product.image}/100/100`" :alt="item.product.name" />
-              <h3>{{ item.product.name }}</h3>
-            </RouterLink>
+            <div class="in-row">
+              <button @click="removeFromCart(item.product.id)" class="remove-cart-item">
+                <DeleteIcon />
+              </button>
+              <RouterLink :to="`/product/${item.product.id}`" class="in-row">
+                <img :src="`${item.product.image}/80/80`" :alt="item.product.name" />
+                <h3>{{ item.product.name }}</h3>
+              </RouterLink>
+            </div>
           </td>
           <td class="text-center">
             <h3>{{ item.quantity }}</h3>
@@ -43,6 +48,7 @@
 </template>
 
 <script setup lang="ts">
+import DeleteIcon from '@/components/icons/DeleteIcon.vue'
 import type { CartItemWithProduct } from '@/services/api/handlers'
 import { ref, onMounted } from 'vue'
 
@@ -59,6 +65,25 @@ const fetchCart = async () => {
     cart.value = await response.json()
   } catch (error) {
     console.error('Error fetching cart ->', error)
+  }
+}
+
+const removeFromCart = async (productId: number) => {
+  try {
+    const response = await fetch(`/api/cart/${productId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    if (!response.ok) {
+      throw new Error("Couldn't remove the product from the cart")
+    }
+
+    cart.value = await response.json()
+  } catch (err) {
+    console.error('Error removing the product from the cart:', err)
   }
 }
 
@@ -79,10 +104,15 @@ td {
   border-bottom: 4px solid var(--color-text);
 }
 
-.product-info {
+.remove-cart-item {
+  padding: 0;
+  background-color: transparent;
+}
+
+.in-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 20px;
 }
 
 h1 {
@@ -96,6 +126,10 @@ h2 {
 
 h3 {
   font-size: 1.5rem;
+}
+
+.cart-total {
+  padding-right: 12px;
 }
 
 .cart-empty {
