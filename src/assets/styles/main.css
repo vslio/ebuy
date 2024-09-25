@@ -1,4 +1,6 @@
 @import './base.css';
+@import './animations.css';
+@import './form.css';
 @import './product.css';
 
 #app {
@@ -18,22 +20,6 @@ a:active {
   color: var(--color-text);
 }
 
-button {
-  padding: 8px 12px;
-  background-color: var(--color-button);
-  color: var(--color-button-text);
-  font-size: 0.8rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-
-  &:disabled {
-    opacity: 0.2;
-    cursor: not-allowed;
-  }
-}
-
 img {
   border-radius: 8px;
 }
@@ -50,10 +36,4 @@ img {
   display: flex;
   align-items: center;
   gap: 20px;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 32px;
 }
