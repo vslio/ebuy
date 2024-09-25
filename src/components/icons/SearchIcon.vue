@@ -9,7 +9,7 @@
     <path
       d="M17.5 17.5 22 22M20 11a9 9 0 1 0-18 0 9 9 0 0 0 18 0Z"
       stroke="#2c3e50"
-      stroke-width="2"
+      stroke-width="3"
       stroke-linecap="round"
       stroke-linejoin="round"
     />

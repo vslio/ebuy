@@ -1,21 +1,19 @@
-<script setup lang="ts">
-import CartIcon from '@/components/icons/CartIcon.vue'
-import SearchIcon from '@/components/icons/SearchIcon.vue'
-</script>
-
 <template>
   <header>
     <nav class="in-row">
       <RouterLink to="/" class="logo">👋 e-μπάι</RouterLink>
-      <div class="in-row">
-        <RouterLink to="/search"><SearchIcon :size="32" /></RouterLink>
-        <RouterLink to="/cart"><CartIcon /></RouterLink>
-      </div>
+      <SearchBar />
+      <RouterLink to="/cart"><CartIcon /></RouterLink>
     </nav>
   </header>
 
   <RouterView />
 </template>
+
+<script setup lang="ts">
+import CartIcon from '@/components/icons/CartIcon.vue'
+import SearchBar from '@/components/SearchBar.vue'
+</script>
 
 <style scoped>
 nav {
@@ -39,18 +37,9 @@ a:not(.logo) {
 }
 
 .logo {
+  padding: 0;
   font-weight: 700;
   font-size: 2rem;
   line-height: 1;
-}
-
-.in-row {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.logo {
-  padding: 0;
 }
 </style>
