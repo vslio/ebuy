@@ -9,15 +9,12 @@
 
 a {
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+  color: var(--color-text);
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+a:visited,
+a:active {
+  color: var(--color-text);
 }
 
 @media (min-width: 1024px) {
@@ -28,4 +25,15 @@ a {
   #app {
     padding: 0 2rem;
   }
+}
+
+button {
+  padding: 8px 12px;
+  color: var(--color-button-text);
+  font-size: 0.8rem;
+  font-weight: bold;
+  background-color: var(--color-button);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
 }

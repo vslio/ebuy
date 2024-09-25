@@ -1,3 +1,5 @@
+@import './modern-normalize.css';
+
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
   --vt-c-white: #ffffff;
@@ -32,6 +34,8 @@
 
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
+  --color-button: var(--vt-c-black);
+  --color-button-text: var(--vt-c-white);
 
   --section-gap: 160px;
 }
@@ -47,15 +51,9 @@
 
     --color-heading: var(--vt-c-text-dark-1);
     --color-text: var(--vt-c-text-dark-2);
+    --color-button: var(--vt-c-white);
+    --color-button-text: var(--vt-c-black);
   }
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  font-weight: normal;
 }
 
 body {
