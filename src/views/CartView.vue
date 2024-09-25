@@ -5,15 +5,15 @@
       <thead>
         <tr>
           <th></th>
-          <th class="text-center"><h3>Quantity</h3></th>
-          <th class="text-right"><h3>Price</h3></th>
+          <th><h3 class="text-center">Quantity</h3></th>
+          <th><h3 class="text-right">Price</h3></th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="item in cart" :key="item.product.id" class="cart-item">
           <td>
             <div class="in-row">
-              <button @click="removeFromCart(item.product.id)" class="remove-cart-item">
+              <button @click="removeFromCart(item.product.id)">
                 <DeleteIcon />
               </button>
               <RouterLink :to="`/product/${item.product.id}`" class="in-row">
@@ -22,11 +22,20 @@
               </RouterLink>
             </div>
           </td>
-          <td class="text-center">
-            <h3>{{ item.quantity }}</h3>
+          <td>
+            <div class="in-row cart-item-quantity">
+              <button @click="decreaseItemQuantity(item.product.id)"><MinusIcon /></button>
+              <h3>{{ item.quantity }}</h3>
+              <button
+                @click="increaseItemQuantity(item.product.id)"
+                :disabled="item.product.stock === 0"
+              >
+                <PlusIcon />
+              </button>
+            </div>
           </td>
-          <td class="text-right">
-            <h3>€{{ (item.product.price * item.quantity).toFixed(2) }}</h3>
+          <td>
+            <h3 class="text-right">€{{ (item.product.price * item.quantity).toFixed(2) }}</h3>
           </td>
         </tr>
       </tbody>
@@ -49,6 +58,8 @@
 
 <script setup lang="ts">
 import DeleteIcon from '@/components/icons/DeleteIcon.vue'
+import MinusIcon from '@/components/icons/MinusIcon.vue'
+import PlusIcon from '@/components/icons/PlusIcon.vue'
 import type { CartItemWithProduct } from '@/services/api/handlers'
 import { ref, onMounted } from 'vue'
 
@@ -65,6 +76,48 @@ const fetchCart = async () => {
     cart.value = await response.json()
   } catch (error) {
     console.error('Error fetching cart ->', error)
+  }
+}
+
+const increaseItemQuantity = async (productId: number) => {
+  try {
+    const response = await fetch(`/api/cart/${productId}/increase`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    if (!response.ok) {
+      if (response.status === 400) {
+        throw new Error('Not enough stock')
+      } else {
+        throw new Error("Couldn't increase the item quantity")
+      }
+    }
+
+    cart.value = await response.json()
+  } catch (err) {
+    console.error('Error increasing the product quantity:', err)
+  }
+}
+
+const decreaseItemQuantity = async (productId: number) => {
+  try {
+    const response = await fetch(`/api/cart/${productId}/decrease`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+
+    if (!response.ok) {
+      throw new Error("Couldn't increase the item quantity")
+    }
+
+    cart.value = await response.json()
+  } catch (err) {
+    console.error('Error increasing the product quantity:', err)
   }
 }
 
@@ -104,15 +157,19 @@ td {
   border-bottom: 4px solid var(--color-text);
 }
 
-.remove-cart-item {
-  padding: 0;
-  background-color: transparent;
-}
-
 .in-row {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+
+button {
+  padding: 0;
+  background-color: transparent;
+}
+
+.cart-item-quantity {
+  justify-content: center;
 }
 
 h1 {

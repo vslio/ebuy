@@ -139,6 +139,56 @@ export const handlers = [
     }
   ),
 
+  http.put<
+    { productId: string },
+    CartItem[],
+    CartItemWithProduct[] | ResponseError,
+    '/api/cart/:productId/increase'
+  >('/api/cart/:productId/increase', ({ params }) => {
+    const productId = Number(params.productId)
+    const item = cart.find((item) => item.productId === productId)
+    const product = products.find((p) => p.id === productId)
+
+    if (item && product) {
+      if (product.stock > 0) {
+        item.quantity += 1
+        product.stock -= 1
+
+        return HttpResponse.json(getCartWithProductDetails())
+      } else {
+        return HttpResponse.json({ error: 'Not enough stock for this product' }, { status: 400 })
+      }
+    }
+
+    return HttpResponse.json({ error: 'Product not found' }, { status: 404 })
+  }),
+
+  http.put<
+    { productId: string },
+    CartItem[],
+    CartItemWithProduct[] | ResponseError,
+    '/api/cart/:productId/decrease'
+  >('/api/cart/:productId/decrease', ({ params }) => {
+    const productId = Number(params.productId)
+    const item = cart.find((item) => item.productId === productId)
+    const product = products.find((p) => p.id === productId)
+
+    if (item && product) {
+      if (item.quantity > 0) {
+        item.quantity -= 1
+        product.stock += 1
+
+        if (item.quantity === 0) {
+          cart = cart.filter((i) => i.productId !== productId)
+        }
+
+        return HttpResponse.json(getCartWithProductDetails())
+      }
+    }
+
+    return HttpResponse.json({ error: 'Product not found' }, { status: 404 })
+  }),
+
   http.delete<
     { productId: string },
     CartItem[],
@@ -153,9 +203,7 @@ export const handlers = [
       product.stock += item.quantity
       cart = cart.filter((i) => i.productId !== productId)
 
-      const cartWithProduct = getCartWithProductDetails()
-
-      return HttpResponse.json(cartWithProduct)
+      return HttpResponse.json(getCartWithProductDetails())
     }
 
     return HttpResponse.json({ error: 'Product not found' }, { status: 404 })
