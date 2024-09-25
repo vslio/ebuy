@@ -1,5 +1,7 @@
 import { http, HttpResponse } from 'msw'
 
+type ResponseError = { error?: string }
+
 export type Product = {
   id: number
   name: string
@@ -7,6 +9,11 @@ export type Product = {
   image: string
   description: string
   stock: number
+}
+
+type CartItem = {
+  productId: number
+  quantity: number
 }
 
 const products: Product[] = [
@@ -53,19 +60,52 @@ const products: Product[] = [
   }
 ]
 
+const cart: CartItem[] = []
+
 export const handlers = [
-  http.get('/api/products', () => {
+  http.get<never, never, Product[] | ResponseError, '/api/products'>('/api/products', () => {
     return HttpResponse.json(products)
   }),
 
-  http.get('/api/products/:id', ({ params }) => {
-    const id = Number(params.id)
-    const product = products.find((p) => p.id === id)
+  http.get<{ id: string }, { id: string }, Product | ResponseError, '/api/products/:id'>(
+    '/api/products/:id',
+    ({ params }) => {
+      const id = Number(params.id)
+      const product = products.find((p) => p.id === id)
 
-    if (product) {
-      return HttpResponse.json(product)
-    } else {
-      return HttpResponse.json({ error: 'Product not found' }, { status: 404 })
+      if (product) {
+        return HttpResponse.json(product)
+      } else {
+        return HttpResponse.json({ error: 'Product not found' }, { status: 404 })
+      }
     }
-  })
+  ),
+
+  http.post<never, CartItem, { message?: string } | ResponseError, '/api/cart'>(
+    '/api/cart',
+    async ({ request }) => {
+      const { productId, quantity } = await request.json()
+      const product = products.find((p) => p.id === productId)
+
+      if (!product) {
+        return HttpResponse.json({ error: 'Product not found' }, { status: 404 })
+      }
+
+      if (product.stock < quantity) {
+        return HttpResponse.json({ error: 'No stock' }, { status: 400 })
+      }
+
+      const existingItem = cart.find((item) => item.productId === productId)
+
+      if (existingItem) {
+        existingItem.quantity += quantity
+      } else {
+        cart.push({ productId, quantity })
+      }
+
+      product.stock -= quantity
+
+      return HttpResponse.json({ message: 'Product added to cart' })
+    }
+  )
 ]
