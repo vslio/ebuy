@@ -89,6 +89,21 @@ export const handlers = [
     return HttpResponse.json(products)
   }),
 
+  http.get<{ term: string }, never, Product[] | ResponseError, '/api/products/search/:term'>(
+    '/api/products/search/:term',
+    ({ params }) => {
+      if (!params.term) {
+        return HttpResponse.json({ error: 'Search query is required' }, { status: 400 })
+      }
+
+      const filteredProducts = products.filter((product) =>
+        product.name.toLowerCase().includes(params.term.toLowerCase())
+      )
+
+      return HttpResponse.json(filteredProducts)
+    }
+  ),
+
   http.get<{ id: string }, { id: string }, Product | ResponseError, '/api/products/:id'>(
     '/api/products/:id',
     ({ params }) => {
