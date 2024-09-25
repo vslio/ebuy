@@ -16,6 +16,11 @@ type CartItem = {
   quantity: number
 }
 
+export type CartItemWithProduct = {
+  product: Product
+  quantity: number
+}
+
 const products: Product[] = [
   {
     id: 1,
@@ -47,7 +52,7 @@ const products: Product[] = [
     price: 1000,
     image: 'https://picsum.photos',
     description: "I'm really running out of ideas.",
-    stock: 0
+    stock: 1
   },
   {
     id: 5,
@@ -80,6 +85,27 @@ export const handlers = [
       }
     }
   ),
+
+  http.get<never, never, CartItemWithProduct[] | ResponseError, '/api/cart'>('/api/cart', () => {
+    if (!cart.length) return HttpResponse.json([])
+
+    const cartWithProduct = cart
+      .map((item) => {
+        const product = products.find((p) => p.id === item.productId)
+
+        if (product) {
+          return {
+            product,
+            quantity: item.quantity
+          }
+        }
+
+        return undefined
+      })
+      .filter((item) => item !== undefined)
+
+    return HttpResponse.json(cartWithProduct)
+  }),
 
   http.post<never, CartItem, { message?: string } | ResponseError, '/api/cart'>(
     '/api/cart',
