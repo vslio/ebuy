@@ -6,7 +6,7 @@
       :key="product.id"
       class="product-item"
     >
-      <img :src="`${product.image}/300/200`" :alt="product.name" class="product-image" />
+      <img :src="`${product.image}/300/300`" :alt="product.name" class="product-image" />
       <div>
         <h2>{{ product.name }}</h2>
         <span class="product-price">€{{ product.price.toFixed(2) }}</span>
