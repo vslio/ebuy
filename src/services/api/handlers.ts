@@ -56,5 +56,16 @@ const products: Product[] = [
 export const handlers = [
   http.get('/api/products', () => {
     return HttpResponse.json(products)
+  }),
+
+  http.get('/api/products/:id', ({ params }) => {
+    const id = Number(params.id)
+    const product = products.find((p) => p.id === id)
+
+    if (product) {
+      return HttpResponse.json(product)
+    } else {
+      return HttpResponse.json({ error: 'Product not found' }, { status: 404 })
+    }
   })
 ]
