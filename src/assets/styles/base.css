@@ -50,10 +50,14 @@
     --color-border-hover: var(--vt-c-divider-dark-1);
 
     --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
+    --color-text: var(--vt-c-text-dark-1);
     --color-button: var(--vt-c-white);
     --color-button-text: var(--vt-c-black);
   }
+}
+
+.stroke-color {
+  stroke: var(--color-text);
 }
 
 html {
