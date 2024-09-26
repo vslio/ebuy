@@ -1,15 +1,20 @@
 <template>
   <header>
     <nav>
-      <RouterLink to="/" class="logo"
-        ><h3><span class="emoji">👋</span> e-μπάι</h3></RouterLink
-      >
+      <RouterLink to="/?page=1" class="logo">
+        <img src="/icons/ebuy.svg" width="44" height="44" />
+        <h3>e-μπάι</h3>
+      </RouterLink>
       <SearchBar class="search-bar" />
       <RouterLink class="cart-icon" to="/cart"><CartIcon /></RouterLink>
     </nav>
   </header>
 
-  <RouterView />
+  <router-view v-slot="{ Component, route }">
+    <transition name="fade" mode="out-in">
+      <component :is="Component" :key="`${route.path}${route.query?.page}`" />
+    </transition>
+  </router-view>
 </template>
 
 <script setup lang="ts">
@@ -33,6 +38,8 @@ nav {
 }
 
 .logo {
+  display: flex;
+  gap: 12px;
   padding: 0;
   font-size: 2rem;
   line-height: 1;

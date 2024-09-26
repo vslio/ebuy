@@ -17,8 +17,12 @@
   gap: 20px;
 }
 
-.emoji {
-  font-family: 'Noto Color Emoji', sans-serif;
-  font-weight: 400;
-  font-style: normal;
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }

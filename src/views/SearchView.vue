@@ -16,7 +16,7 @@
       <ProductCard v-for="product in products" :key="product.id" :product="product" />
     </div>
     <div v-else class="text-center">
-      <h3 class="emoji">😾</h3>
+      <img src="/icons/angry.svg" width="60" height="60" />
       <h2>We couldn't find what you're looking for &hellip;</h2>
     </div>
   </div>
@@ -79,17 +79,10 @@ h1 {
   display: inline-block;
   align-self: flex-start;
   margin: 0;
-  font-size: 2rem;
-  font-weight: 700;
 }
 
 h2 {
   margin-bottom: 0;
   line-height: 1;
-}
-
-.emoji {
-  margin: 0;
-  font-size: 3rem;
 }
 </style>

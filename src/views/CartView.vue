@@ -1,5 +1,5 @@
 <template>
-  <template v-if="cart.length > 0">
+  <div v-if="cart.length > 0">
     <h2 class="text-center">Looks like you did some shopping.</h2>
     <table>
       <thead>
@@ -53,13 +53,13 @@
         }}
       </h2>
     </div>
-  </template>
-  <template v-else>
+  </div>
+  <div v-else>
     <div class="cart-empty">
-      <span class="emoji">😢</span>
+      <img src="/icons/lobster.svg" width="60" height="60" />
       <h2>Your cart is empty &hellip;</h2>
     </div>
-  </template>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -179,15 +179,6 @@ button {
 
 h1 {
   margin: 0;
-  font-size: 3rem;
-}
-
-h2 {
-  font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.5rem;
 }
 
 .cart-total {
@@ -200,9 +191,5 @@ h3 {
   h2 {
     margin-top: 0;
   }
-}
-
-.emoji {
-  font-size: 3rem;
 }
 </style>
