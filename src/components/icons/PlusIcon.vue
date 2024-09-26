@@ -7,8 +7,8 @@
     fill="none"
   >
     <path
+      class="stroke-color"
       d="M12 4v16M4 12h16"
-      stroke="#2c3e50"
       stroke-width="2"
       stroke-linecap="round"
       stroke-linejoin="round"
