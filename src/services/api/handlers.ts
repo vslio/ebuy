@@ -86,7 +86,7 @@ export const handlers = [
     return HttpResponse.json(cartWithProduct)
   }),
 
-  http.post<never, CartItem, { message?: string } | ResponseError, '/api/cart'>(
+  http.post<never, CartItem, Product | ResponseError, '/api/cart'>(
     '/api/cart',
     async ({ request }) => {
       const { productId, quantity } = await request.json()
@@ -110,7 +110,7 @@ export const handlers = [
 
       product.stock -= quantity
 
-      return HttpResponse.json({ message: 'Product added to cart' })
+      return HttpResponse.json(product)
     }
   ),
 
