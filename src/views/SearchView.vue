@@ -1,7 +1,10 @@
 <template>
   <div class="search-view">
     <div>
-      <span>You searched for __</span>
+      <span
+        >You searched for it and we found {{ products.length }}
+        {{ products.length === 1 ? 'result' : 'results' }}.</span
+      >
       <div class="search-term-container">
         <h1 class="animate" data-wavy>
           {{ $route.query.term }}
