@@ -76,10 +76,7 @@ const addToCart = async () => {
 h2,
 h3 {
   margin: 0;
-}
-
-h2 {
-  font-size: 1.6rem;
+  font-weight: 400;
 }
 
 .product-price {
