@@ -1,5 +1,5 @@
 <template>
-  <div v-if="cart.length > 0">
+  <div class="cart-view" v-if="cart.length > 0">
     <h2 class="text-center">Looks like you did some shopping.</h2>
     <table>
       <thead>
@@ -153,6 +153,12 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.cart-view {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -177,19 +183,11 @@ button {
   justify-content: center;
 }
 
-h1 {
-  margin: 0;
-}
-
 .cart-total {
   padding-right: 12px;
 }
 
 .cart-empty {
   text-align: center;
-
-  h2 {
-    margin-top: 0;
-  }
 }
 </style>
