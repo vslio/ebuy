@@ -18,6 +18,13 @@ import SearchBar from '@/components/SearchBar.vue'
 </script>
 
 <style scoped>
+header {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-background);
+  z-index: 1;
+}
+
 nav {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
