@@ -3,6 +3,7 @@
     <input
       v-model="searchQuery"
       @keyup.enter="performSearch"
+      @keyup.esc="clear"
       @focusin="isFocussed = true"
       @focusout="isFocussed = false"
       type="text"
@@ -23,6 +24,11 @@ const isFocussed = ref(false)
 const searchQuery = ref('')
 const searchInput = ref<HTMLInputElement | null>(null)
 
+const clear = () => {
+  searchQuery.value = ''
+  searchInput.value?.blur()
+}
+
 const performSearch = () => {
   if (searchQuery.value.trim()) {
     router.push({
@@ -31,8 +37,7 @@ const performSearch = () => {
     })
   }
 
-  searchQuery.value = ''
-  searchInput.value?.blur()
+  clear()
 }
 </script>
 
