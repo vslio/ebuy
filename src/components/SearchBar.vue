@@ -1,15 +1,15 @@
 <template>
-  <div :class="`search-container ${isFocussed ? 'focussed' : ''}`">
+  <div data-wavy :class="`search-container ${isFocussed ? 'is-focussed animate' : ''}`">
     <input
       v-model="searchQuery"
       @keyup.enter="performSearch"
       @focusin="isFocussed = true"
       @focusout="isFocussed = false"
       type="text"
-      placeholder="What do you seek?"
+      placeholder="Seek what you must"
       ref="searchInput"
     />
-    <button @click="performSearch"><SearchIcon :size="24" /></button>
+    <button @click="performSearch"><SearchIcon :size="20" /></button>
   </div>
 </template>
 
@@ -41,22 +41,26 @@ const performSearch = () => {
   display: flex;
   padding: 4px 0;
   border-bottom: 3px solid #000;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+
+  &.is-focussed,
+  &:hover {
+    border-color: transparent;
+  }
 }
 
-.search-input-container {
-  display: flex;
+input {
+  font-family: 'PPNeueMachina';
+  font-size: 1rem;
+  font-weight: 900;
+
+  &::placeholder {
+    color: var(--color-text);
+  }
 }
 
 button {
   padding: 0;
   background-color: transparent;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
-
-  .focussed & {
-    opacity: 1;
-    transform: scale(1);
-  }
 }
 </style>

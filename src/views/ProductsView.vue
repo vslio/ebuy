@@ -29,27 +29,3 @@ onMounted(() => {
   fetchProducts()
 })
 </script>
-
-<style scoped>
-.product-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-h2 {
-  margin: 0;
-  font-size: 1.6em;
-  font-weight: 900;
-}
-
-.product-price {
-  font-size: 1.6em;
-  font-weight: 900;
-  line-height: 1;
-}
-
-img {
-  width: 100%;
-}
-</style>

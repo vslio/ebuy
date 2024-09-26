@@ -1,6 +1,6 @@
 <template>
   <template v-if="cart.length > 0">
-    <h1>Your cart</h1>
+    <h2 class="text-center">Looks like you did some shopping.</h2>
     <table>
       <thead>
         <tr>
@@ -13,12 +13,14 @@
         <tr v-for="item in cart" :key="item.product.id" class="cart-item">
           <td>
             <div class="in-row">
-              <button @click="removeFromCart(item.product.id)">
-                <DeleteIcon />
-              </button>
+              <div data-skew>
+                <button @click="removeFromCart(item.product.id)">
+                  <DeleteIcon />
+                </button>
+              </div>
               <RouterLink :to="`/product/${item.product.id}`" class="in-row">
                 <img :src="`${item.product.image}/80/80`" :alt="item.product.name" />
-                <h3>{{ item.product.name }}</h3>
+                <h3 data-wavy>{{ item.product.name }}</h3>
               </RouterLink>
             </div>
           </td>

@@ -1,16 +1,19 @@
 <template>
   <div class="search-view">
     <div>
-      <h2>You searched for</h2>
-      <h1 class="wavy active" :data-wavy="`${$route.query.term} ${$route.query.term}`">
-        {{ $route.query.term }}
-      </h1>
+      <span>You searched for __</span>
+      <div class="search-term-container">
+        <h1 class="animate" data-wavy>
+          {{ $route.query.term }}
+        </h1>
+        <RouterLink to="/" data-skew class="clear-search-term">x</RouterLink>
+      </div>
     </div>
     <div v-if="products.length > 0" class="product-grid">
       <ProductCard v-for="product in products" :key="product.id" :product="product" />
     </div>
     <div v-else class="text-center">
-      <span class="emoji">😾</span>
+      <h3 class="emoji">😾</h3>
       <h2>We couldn't find what you're looking for &hellip;</h2>
     </div>
   </div>
@@ -53,6 +56,22 @@ onMounted(() => {
   gap: 32px;
 }
 
+span {
+  font-size: 1.2rem;
+}
+
+.search-term-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 32px;
+}
+
+.clear-search-term {
+  font-family: 'Syne';
+  font-variation-settings: 'wght' 700;
+  font-size: 2rem;
+}
+
 h1 {
   display: inline-block;
   align-self: flex-start;
@@ -67,6 +86,7 @@ h2 {
 }
 
 .emoji {
+  margin: 0;
   font-size: 3rem;
 }
 </style>

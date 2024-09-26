@@ -1,9 +1,9 @@
-.wavy {
+[data-wavy] {
   position: relative;
   overflow: hidden;
 
   &::after {
-    content: '----------------------------';
+    content: '--------------------------------------------';
     display: inline-block;
     position: absolute;
     bottom: -2px;
@@ -21,7 +21,7 @@
     pointer-events: none;
   }
 
-  &.active::after,
+  &.animate::after,
   &:hover::after {
     text-decoration-color: var(--color-text);
     opacity: 1;
@@ -37,5 +37,21 @@
 
   to {
     left: -35px;
+  }
+}
+
+[data-skew]:hover {
+  animation: skew 0.8s cubic-bezier(0.23, 2, 0.23, 2) infinite;
+}
+
+@keyframes skew {
+  0% {
+    transform: skewX(0deg);
+  }
+  50% {
+    transform: skewX(10deg);
+  }
+  100% {
+    transform: skewX(-10deg);
   }
 }

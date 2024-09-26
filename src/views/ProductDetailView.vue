@@ -1,10 +1,10 @@
 <template>
   <div v-if="product" class="product-detail">
-    <img :src="`${product.image}/600/600`" :alt="product.name" class="product-image" />
+    <img :src="`${product.image}/600/600`" :alt="product.name" />
     <div class="product-info">
       <header>
         <nav class="in-row">
-          <RouterLink to="/"><h3 class="wavy" data-wavy="Home Home`">Home</h3></RouterLink>
+          <RouterLink to="/"><h3 data-wavy>Home</h3></RouterLink>
           <h3>→</h3>
           <h3>{{ product.name }}</h3>
         </nav>
@@ -13,9 +13,11 @@
         <h1>{{ product.name }}</h1>
         <h2>€{{ product.price.toFixed(2) }}</h2>
       </div>
-      <button @click="addToCart" :disabled="product.stock === 0">
-        {{ product.stock > 0 ? 'Add to cart' : 'Out of stock' }}
-      </button>
+      <div data-skew>
+        <button @click="addToCart" :disabled="product.stock === 0">
+          {{ product.stock > 0 ? 'Add to cart' : 'Out of stock' }}
+        </button>
+      </div>
       <p>{{ product.description }}</p>
     </div>
   </div>
@@ -103,7 +105,7 @@ h1 {
 h2 {
   margin: 0;
   font-size: 2.5em;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1;
 }
 

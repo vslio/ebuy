@@ -1,8 +1,8 @@
 <template>
   <RouterLink :to="`/product/${product.id}`" :key="product.id" class="product-item">
-    <img :src="`${product.image}/300/300`" :alt="product.name" class="product-image" />
+    <img :src="`${product.image}/300/300`" :alt="product.name" />
     <div class="product-info">
-      <h2>{{ product.name }}</h2>
+      <h2 data-wavy>{{ product.name }}</h2>
       <span class="product-price">€{{ product.price.toFixed(2) }}</span>
     </div>
   </RouterLink>
@@ -29,15 +29,19 @@ defineProps<{
   align-items: flex-start;
 }
 
-h2 {
+h2,
+h3 {
   margin: 0;
-  font-size: 1.6em;
-  font-weight: 900;
+}
+
+h2 {
+  font-size: 1.4rem;
 }
 
 .product-price {
-  font-size: 1.6em;
-  font-weight: 900;
+  font-family: 'PPNeueMachina';
+  font-size: 1.2rem;
+  font-weight: 400;
   line-height: 1;
 }
 
