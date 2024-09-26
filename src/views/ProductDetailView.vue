@@ -4,7 +4,7 @@
     <div class="product-info">
       <header>
         <nav class="in-row">
-          <RouterLink to="/"><h3 data-wavy>Home</h3></RouterLink>
+          <RouterLink to="/?category=all&page=1"><h3 data-wavy>Home</h3></RouterLink>
           <h3>→</h3>
           <h3>{{ product.name }}</h3>
         </nav>
@@ -19,7 +19,9 @@
     </div>
   </div>
   <div v-else-if="error" class="error">
-    <router-link to="/" replace class="error-link">← View our products</router-link>
+    <router-link to="/?category=all&page=1" replace class="error-link"
+      >← View our products</router-link
+    >
     {{ error }}
   </div>
   <div v-else class="loading">Add a loading element here</div>

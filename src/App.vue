@@ -1,7 +1,7 @@
 <template>
   <header>
     <nav>
-      <RouterLink to="/?page=1" class="logo">
+      <RouterLink to="/?category=all&page=1" class="logo">
         <img src="/icons/ebuy.svg" width="44" height="44" />
         <h3>e-μπάι</h3>
       </RouterLink>
@@ -12,7 +12,10 @@
 
   <router-view v-slot="{ Component, route }">
     <transition name="fade" mode="out-in">
-      <component :is="Component" :key="`${route.path}${route.query?.page}`" />
+      <component
+        :is="Component"
+        :key="`${route.path}${route.query?.page}${route.query?.category}`"
+      />
     </transition>
   </router-view>
 </template>

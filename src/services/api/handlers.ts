@@ -11,6 +11,8 @@ export interface PaginatedResponse<T> {
 
 type ResponseError = { error?: string }
 
+export type Categories = 'all' | 't-shirts' | 'tea-towels' | 'caps'
+
 export type Product = {
   id: number
   name: string
@@ -57,13 +59,18 @@ export const handlers = [
     ({ request }) => {
       const url = new URL(request.url)
       const page = Number(url.searchParams.get('page') || '1')
-      const productsPerPage = 10
+      const category = url.searchParams.get('category')
 
+      const productsPerPage = 10
       const startIndex = (page - 1) * productsPerPage
       const endIndex = startIndex + productsPerPage
-      const paginatedProducts = products.slice(startIndex, endIndex)
 
-      const total = Math.ceil(products.length / productsPerPage)
+      const filteredProducts =
+        category === 'all' ? products : products.filter((p) => p.category === category)
+
+      const paginatedProducts = filteredProducts.slice(startIndex, endIndex)
+
+      const total = Math.ceil(filteredProducts.length / productsPerPage)
 
       if (page > total) {
         return HttpResponse.json({ error: 'Not enough pages for you, innit?' }, { status: 400 })

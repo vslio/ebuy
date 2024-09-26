@@ -21,6 +21,12 @@
     pointer-events: none;
   }
 
+  &.display::after {
+    text-decoration-color: var(--color-text);
+    opacity: 1;
+    transform: scale(1);
+  }
+
   &.animate::after,
   &:hover::after {
     text-decoration-color: var(--color-text);

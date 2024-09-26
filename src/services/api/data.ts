@@ -2,7 +2,7 @@ export const productsData = [
   {
     id: 1,
     name: 'Trumpet Cat',
-    category: 'Cap',
+    category: 'caps',
     price: 30,
     image: 'c.trumpet-cat.jpg',
     stock: 2
@@ -10,7 +10,7 @@ export const productsData = [
   {
     id: 12,
     name: 'Dark Cloud',
-    category: 'Cap',
+    category: 'caps',
     price: 30,
     image: 'c.dark-cloud.jpg',
     stock: 27
@@ -18,7 +18,7 @@ export const productsData = [
   {
     id: 13,
     name: 'Split Personality',
-    category: 'Cap',
+    category: 'caps',
     price: 30,
     image: 'c.split-personality.jpg',
     stock: 27
@@ -26,7 +26,7 @@ export const productsData = [
   {
     id: 2,
     name: 'Average Runners Club',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.average-runners-club.jpg',
     stock: 33
@@ -34,7 +34,7 @@ export const productsData = [
   {
     id: 3,
     name: 'Buon Giorno',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.buon-giorno.jpg',
     stock: 16
@@ -42,7 +42,7 @@ export const productsData = [
   {
     id: 4,
     name: 'Cool Cats',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.cool-cats.jpg',
     stock: 19
@@ -50,7 +50,7 @@ export const productsData = [
   {
     id: 5,
     name: 'Dancing With Friends',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.dancing-with-friends.jpg',
     stock: 9
@@ -58,7 +58,7 @@ export const productsData = [
   {
     id: 6,
     name: "Freddie's 24h",
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.freddies-24h.jpg',
     stock: 27
@@ -66,7 +66,7 @@ export const productsData = [
   {
     id: 7,
     name: 'Home Baked Goods',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.home-baked-goods.jpg',
     stock: 29
@@ -74,7 +74,7 @@ export const productsData = [
   {
     id: 8,
     name: 'Human Apple',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.human-apple.jpg',
     stock: 45
@@ -82,7 +82,7 @@ export const productsData = [
   {
     id: 9,
     name: 'Kinda Fresh Pasta',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.kinda-fresh-pasta.jpg',
     stock: 26
@@ -90,7 +90,7 @@ export const productsData = [
   {
     id: 10,
     name: 'Lemon Disco',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.lemon-disco.jpg',
     stock: 38
@@ -98,7 +98,7 @@ export const productsData = [
   {
     id: 11,
     name: 'Negroni',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.negroni.jpg',
     stock: 18
@@ -106,7 +106,7 @@ export const productsData = [
   {
     id: 12,
     name: 'Pickles',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.pickles.jpg',
     stock: 42
@@ -114,7 +114,7 @@ export const productsData = [
   {
     id: 13,
     name: 'Puffy Bows',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.puffy-bows.jpg',
     stock: 39
@@ -122,7 +122,7 @@ export const productsData = [
   {
     id: 14,
     name: 'Running From My Problems',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.running-from-my-problems.jpg',
     stock: 37
@@ -130,7 +130,7 @@ export const productsData = [
   {
     id: 15,
     name: 'Sandals Season',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.sandals-season.jpg',
     stock: 37
@@ -138,7 +138,7 @@ export const productsData = [
   {
     id: 16,
     name: 'Spritz',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.spritz.jpg',
     stock: 14
@@ -146,7 +146,7 @@ export const productsData = [
   {
     id: 17,
     name: 'Stan The Hot Dawg',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.stan-the-hot-dawg.jpg',
     stock: 25
@@ -154,7 +154,7 @@ export const productsData = [
   {
     id: 18,
     name: 'Strawberry Disco',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.strawberry-disco.jpg',
     stock: 39
@@ -162,7 +162,7 @@ export const productsData = [
   {
     id: 19,
     name: 'Summer Dream',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.summer-dream.jpg',
     stock: 3
@@ -170,7 +170,7 @@ export const productsData = [
   {
     id: 20,
     name: 'The Duck Dog',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.the-duck-dog.jpg',
     stock: 37
@@ -178,7 +178,7 @@ export const productsData = [
   {
     id: 21,
     name: 'The Good Boys',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.the-good-boys.jpg',
     stock: 17
@@ -186,7 +186,7 @@ export const productsData = [
   {
     id: 22,
     name: 'Twin Peaks',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.twin-peaks.jpg',
     stock: 8
@@ -194,7 +194,7 @@ export const productsData = [
   {
     id: 23,
     name: 'Vibing The Universe',
-    category: 'T-Shirt',
+    category: 't-shirts',
     price: 30,
     image: 's.vibing-the-universe.jpg',
     stock: 9
@@ -202,7 +202,7 @@ export const productsData = [
   {
     id: 24,
     name: 'Apple Face',
-    category: 'Tea towels',
+    category: 'tea-towels',
     price: 26,
     image: 't.apple-face.jpg',
     stock: 43
@@ -210,7 +210,7 @@ export const productsData = [
   {
     id: 25,
     name: 'Cha Cha Cha',
-    category: 'Tea towels',
+    category: 'tea-towels',
     price: 26,
     image: 't.cha-cha-cha.jpg',
     stock: 44
@@ -218,7 +218,7 @@ export const productsData = [
   {
     id: 26,
     name: 'Human Of Many Faces',
-    category: 'Tea towels',
+    category: 'tea-towels',
     price: 26,
     image: 't.human-of-many-faces.jpg',
     stock: 40
@@ -226,7 +226,7 @@ export const productsData = [
   {
     id: 27,
     name: 'Make It Pop',
-    category: 'Tea towels',
+    category: 'tea-towels',
     price: 26,
     image: 't.make-it-pop.jpg',
     stock: 19
@@ -234,7 +234,7 @@ export const productsData = [
   {
     id: 28,
     name: "Rootin' Tootin'",
-    category: 'Tea towels',
+    category: 'tea-towels',
     price: 26,
     image: 't.rootin-tootin.jpg',
     stock: 46
@@ -242,7 +242,7 @@ export const productsData = [
   {
     id: 29,
     name: 'Spaghetti Alla Puttanesca',
-    category: 'Tea towels',
+    category: 'tea-towels',
     price: 26,
     image: 't.spaghetti-alla-puttanesca.jpg',
     stock: 47

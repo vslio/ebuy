@@ -9,7 +9,7 @@
         <h1 class="animate" data-wavy>
           {{ $route.query.term }}
         </h1>
-        <RouterLink to="/" data-skew class="clear-search-term">x</RouterLink>
+        <RouterLink to="/?category=all&page=1" data-skew class="clear-search-term">x</RouterLink>
       </div>
     </div>
     <div v-if="products.length > 0" class="product-grid">
