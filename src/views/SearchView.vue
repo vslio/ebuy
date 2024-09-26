@@ -6,7 +6,7 @@
         {{ products.length === 1 ? 'result' : 'results' }}.
       </span>
       <div class="search-term-container">
-        <h1 class="animate" data-wavy>
+        <h1 class="display" data-wavy>
           {{ $route.query.term }}
         </h1>
         <RouterLink to="/?category=all&page=1" data-skew class="clear-search-term">x</RouterLink>
