@@ -7,6 +7,10 @@ button {
   border: none;
   cursor: pointer;
 
+  &:active:not(:disabled) {
+    transform: scale(0.9);
+  }
+
   &:disabled {
     opacity: 0.2;
     cursor: not-allowed;
