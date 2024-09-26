@@ -5,8 +5,7 @@ export const productsData = [
     category: 'Cap',
     price: 30,
     image: 'c.trumpet-cat.jpg',
-    description: '',
-    stock: 27
+    stock: 2
   },
   {
     id: 12,
@@ -14,7 +13,6 @@ export const productsData = [
     category: 'Cap',
     price: 30,
     image: 'c.dark-cloud.jpg',
-    description: '',
     stock: 27
   },
   {
@@ -23,7 +21,6 @@ export const productsData = [
     category: 'Cap',
     price: 30,
     image: 'c.split-personality.jpg',
-    description: '',
     stock: 27
   },
   {
@@ -32,7 +29,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.average-runners-club.jpg',
-    description: '',
     stock: 33
   },
   {
@@ -41,7 +37,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.buon-giorno.jpg',
-    description: '',
     stock: 16
   },
   {
@@ -50,7 +45,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.cool-cats.jpg',
-    description: '',
     stock: 19
   },
   {
@@ -59,7 +53,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.dancing-with-friends.jpg',
-    description: '',
     stock: 9
   },
   {
@@ -68,7 +61,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.freddies-24h.jpg',
-    description: '',
     stock: 27
   },
   {
@@ -77,7 +69,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.home-baked-goods.jpg',
-    description: '',
     stock: 29
   },
   {
@@ -86,7 +77,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.human-apple.jpg',
-    description: '',
     stock: 45
   },
   {
@@ -95,7 +85,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.kinda-fresh-pasta.jpg',
-    description: '',
     stock: 26
   },
   {
@@ -104,7 +93,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.lemon-disco.jpg',
-    description: '',
     stock: 38
   },
   {
@@ -113,7 +101,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.negroni.jpg',
-    description: '',
     stock: 18
   },
   {
@@ -122,7 +109,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.pickles.jpg',
-    description: '',
     stock: 42
   },
   {
@@ -131,7 +117,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.puffy-bows.jpg',
-    description: '',
     stock: 39
   },
   {
@@ -140,7 +125,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.running-from-my-problems.jpg',
-    description: '',
     stock: 37
   },
   {
@@ -149,7 +133,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.sandals-season.jpg',
-    description: '',
     stock: 37
   },
   {
@@ -158,7 +141,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.spritz.jpg',
-    description: '',
     stock: 14
   },
   {
@@ -167,7 +149,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.stan-the-hot-dawg.jpg',
-    description: '',
     stock: 25
   },
   {
@@ -176,7 +157,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.strawberry-disco.jpg',
-    description: '',
     stock: 39
   },
   {
@@ -185,7 +165,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.summer-dream.jpg',
-    description: '',
     stock: 3
   },
   {
@@ -194,7 +173,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.the-duck-dog.jpg',
-    description: '',
     stock: 37
   },
   {
@@ -203,7 +181,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.the-good-boys.jpg',
-    description: '',
     stock: 17
   },
   {
@@ -212,7 +189,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.twin-peaks.jpg',
-    description: '',
     stock: 8
   },
   {
@@ -221,7 +197,6 @@ export const productsData = [
     category: 'T-Shirt',
     price: 30,
     image: 's.vibing-the-universe.jpg',
-    description: '',
     stock: 9
   },
   {
@@ -230,7 +205,6 @@ export const productsData = [
     category: 'Tea towels',
     price: 26,
     image: 't.apple-face.jpg',
-    description: '',
     stock: 43
   },
   {
@@ -239,7 +213,6 @@ export const productsData = [
     category: 'Tea towels',
     price: 26,
     image: 't.cha-cha-cha.jpg',
-    description: '',
     stock: 44
   },
   {
@@ -248,7 +221,6 @@ export const productsData = [
     category: 'Tea towels',
     price: 26,
     image: 't.human-of-many-faces.jpg',
-    description: '',
     stock: 40
   },
   {
@@ -257,7 +229,6 @@ export const productsData = [
     category: 'Tea towels',
     price: 26,
     image: 't.make-it-pop.jpg',
-    description: '',
     stock: 19
   },
   {
@@ -266,7 +237,6 @@ export const productsData = [
     category: 'Tea towels',
     price: 26,
     image: 't.rootin-tootin.jpg',
-    description: '',
     stock: 46
   },
   {
@@ -275,7 +245,6 @@ export const productsData = [
     category: 'Tea towels',
     price: 26,
     image: 't.spaghetti-alla-puttanesca.jpg',
-    description: '',
     stock: 47
   }
 ]

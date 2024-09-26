@@ -16,7 +16,6 @@
       <button @click="addToCart" :disabled="product.stock === 0">
         {{ product.stock > 0 ? 'Add to cart' : 'Out of stock' }}
       </button>
-      <p>{{ product.description }}</p>
     </div>
   </div>
   <div v-else-if="error" class="error">
@@ -112,10 +111,6 @@ button {
   align-self: flex-start;
   padding: 8px 24px;
   font-size: 2rem;
-}
-
-p {
-  margin-top: 0;
 }
 
 img {
