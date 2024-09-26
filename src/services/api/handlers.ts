@@ -1,6 +1,14 @@
 import { http, HttpResponse } from 'msw'
 import { productsData } from '@/services/api/data'
 
+export interface PaginatedResponse<T> {
+  data: T[]
+  pagination: {
+    current: number
+    total: number
+  }
+}
+
 type ResponseError = { error?: string }
 
 export type Product = {
@@ -44,9 +52,33 @@ function getCartWithProductDetails(): CartItemWithProduct[] {
 }
 
 export const handlers = [
-  http.get<never, never, Product[] | ResponseError, '/api/products'>('/api/products', () => {
-    return HttpResponse.json(products)
-  }),
+  http.get<never, never, PaginatedResponse<Product> | ResponseError, '/api/products'>(
+    '/api/products',
+    ({ request }) => {
+      const url = new URL(request.url)
+      const page = Number(url.searchParams.get('page') || '1')
+      const productsPerPage = 10
+
+      const startIndex = (page - 1) * productsPerPage
+      const endIndex = startIndex + productsPerPage
+      const paginatedProducts = products.slice(startIndex, endIndex)
+
+      const total = Math.ceil(products.length / productsPerPage)
+
+      if (page > total) {
+        return HttpResponse.json({ error: 'Not enough pages for you, innit?' }, { status: 400 })
+      }
+
+      const response: PaginatedResponse<Product> = {
+        data: paginatedProducts,
+        pagination: {
+          current: page,
+          total
+        }
+      }
+      return HttpResponse.json(response)
+    }
+  ),
 
   http.get<{ term: string }, never, Product[] | ResponseError, '/api/products/search/:term'>(
     '/api/products/search/:term',

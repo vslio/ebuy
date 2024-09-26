@@ -1,8 +1,19 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, type RouteLocation } from 'vue-router'
 import ProductsView from '@/views/ProductsView.vue'
 import ProductDetailView from '@/views/ProductDetailView.vue'
 import CartView from '@/views/CartView.vue'
 import SearchView from '@/views/SearchView.vue'
+
+function addDefaultQueryParam(to: RouteLocation) {
+  if (!Object.keys(to.query).length) {
+    return {
+      path: to.path,
+      query: {
+        page: 1
+      }
+    }
+  }
+}
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,7 +21,8 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: ProductsView
+      component: ProductsView,
+      beforeEnter: [addDefaultQueryParam]
     },
     {
       path: '/product/:id',
