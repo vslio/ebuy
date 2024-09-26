@@ -1,10 +1,12 @@
 import { http, HttpResponse } from 'msw'
+import { productsData } from '@/services/api/data'
 
 type ResponseError = { error?: string }
 
 export type Product = {
   id: number
   name: string
+  category: string
   price: number
   image: string
   description: string
@@ -21,49 +23,7 @@ export type CartItemWithProduct = {
   quantity: number
 }
 
-const products: Product[] = [
-  {
-    id: 1,
-    name: 'Product 1',
-    price: 15,
-    image: 'https://picsum.photos',
-    description: "This is a random text. Totally the best description text you've never seen.",
-    stock: 14
-  },
-  {
-    id: 2,
-    name: 'Product 2',
-    price: 30,
-    image: 'https://picsum.photos',
-    description: 'This is another random text, used for description.',
-    stock: 17
-  },
-  {
-    id: 3,
-    name: 'Product 3',
-    price: 100,
-    image: 'https://picsum.photos',
-    description: "I'm really smashing it with the descriptions here.",
-    stock: 2
-  },
-  {
-    id: 4,
-    name: 'Product 4',
-    price: 1000,
-    image: 'https://picsum.photos',
-    description: "I'm really running out of ideas.",
-    stock: 1
-  },
-  {
-    id: 5,
-    name: 'Product 5',
-    price: 1000,
-    image: 'https://picsum.photos',
-    description:
-      "Use your imagination. Imagine that this is a decent description. It's not, but just try!",
-    stock: 7
-  }
-]
+const products: Product[] = productsData
 
 let cart: CartItem[] = []
 
