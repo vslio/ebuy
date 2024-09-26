@@ -73,12 +73,6 @@ const addToCart = async () => {
   }
 }
 
-h2,
-h3 {
-  margin: 0;
-  font-weight: 400;
-}
-
 .product-price {
   font-family: 'PPNeueMachina';
   font-size: 1.2rem;

@@ -78,7 +78,6 @@ span {
 h1 {
   display: inline-block;
   align-self: flex-start;
-  margin: 0;
 }
 
 h2 {

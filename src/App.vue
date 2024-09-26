@@ -52,7 +52,6 @@ nav {
 }
 
 h3 {
-  margin: 0;
   font-family: 'Syne';
   font-variation-settings: 'wght' 800;
   transition: font-variation-settings 0.4s cubic-bezier(0.23, 1, 0.32, 1);

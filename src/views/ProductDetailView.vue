@@ -90,12 +90,6 @@ onMounted(() => {
   gap: 32px;
 }
 
-h1,
-h2,
-h3 {
-  margin: 0;
-}
-
 button {
   align-self: flex-start;
   padding: 8px 24px;
