@@ -1,5 +1,6 @@
 import { http, HttpResponse } from 'msw'
 import { productsData } from '@/services/api/data'
+import { useCartStore } from '@/stores/cart'
 
 export interface PaginatedResponse<T> {
   data: T[]
@@ -127,6 +128,7 @@ export const handlers = [
   http.post<never, CartItem, Product | ResponseError, '/api/cart'>(
     '/api/cart',
     async ({ request }) => {
+      const cartStore = useCartStore()
       const { productId, quantity } = await request.json()
       const product = products.find((p) => p.id === productId)
 
@@ -146,6 +148,8 @@ export const handlers = [
         cart.push({ productId, quantity })
       }
 
+      cartStore.increment(quantity)
+
       product.stock -= quantity
 
       return HttpResponse.json(product)
@@ -158,6 +162,7 @@ export const handlers = [
     CartItemWithProduct[] | ResponseError,
     '/api/cart/:productId/increase'
   >('/api/cart/:productId/increase', ({ params }) => {
+    const cartStore = useCartStore()
     const productId = Number(params.productId)
     const item = cart.find((item) => item.productId === productId)
     const product = products.find((p) => p.id === productId)
@@ -166,6 +171,8 @@ export const handlers = [
       if (product.stock > 0) {
         item.quantity += 1
         product.stock -= 1
+
+        cartStore.increment()
 
         return HttpResponse.json(getCartWithProductDetails())
       } else {
@@ -182,6 +189,7 @@ export const handlers = [
     CartItemWithProduct[] | ResponseError,
     '/api/cart/:productId/decrease'
   >('/api/cart/:productId/decrease', ({ params }) => {
+    const cartStore = useCartStore()
     const productId = Number(params.productId)
     const item = cart.find((item) => item.productId === productId)
     const product = products.find((p) => p.id === productId)
@@ -190,6 +198,8 @@ export const handlers = [
       if (item.quantity > 0) {
         item.quantity -= 1
         product.stock += 1
+
+        cartStore.decrement()
 
         if (item.quantity === 0) {
           cart = cart.filter((i) => i.productId !== productId)
@@ -208,6 +218,7 @@ export const handlers = [
     CartItemWithProduct[] | ResponseError,
     '/api/cart/:productId'
   >('/api/cart/:productId', ({ params }) => {
+    const cartStore = useCartStore()
     const productId = Number(params.productId)
     const item = cart.find((item) => item.productId === productId)
     const product = products.find((p) => p.id === productId)
@@ -215,6 +226,8 @@ export const handlers = [
     if (item && product) {
       product.stock += item.quantity
       cart = cart.filter((i) => i.productId !== productId)
+
+      cartStore.decrement(item.quantity)
 
       return HttpResponse.json(getCartWithProductDetails())
     }
