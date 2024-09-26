@@ -90,21 +90,10 @@ onMounted(() => {
   gap: 32px;
 }
 
+h1,
+h2,
 h3 {
   margin: 0;
-}
-
-h1 {
-  margin: 0;
-  font-size: 2.4em;
-  line-height: 1.15;
-  font-weight: 700;
-}
-
-h2 {
-  margin: 0;
-  font-size: 2.5em;
-  font-weight: 400;
 }
 
 button {

@@ -4,13 +4,9 @@
       <ProductCard v-for="product in products" :key="product.id" :product="product" />
     </div>
     <div class="pagination">
-      <button @click="goToPreviousPage" :disabled="currentPage === 1">
-        <h2>←</h2>
-      </button>
+      <button @click="goToPreviousPage" :disabled="currentPage === 1">←</button>
       <h2>Page {{ currentPage }} of {{ totalPages }}</h2>
-      <button @click="goToNextPage" :disabled="currentPage === totalPages">
-        <h2>→</h2>
-      </button>
+      <button @click="goToNextPage" :disabled="currentPage === totalPages">→</button>
     </div>
   </div>
 </template>
@@ -91,6 +87,11 @@ onMounted(() => {
   align-self: center;
   align-items: center;
   gap: 12px;
+
+  button {
+    font-family: 'Gza';
+    font-size: 1.4rem;
+  }
 
   h2 {
     margin: 0;
