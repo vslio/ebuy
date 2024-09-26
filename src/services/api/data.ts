@@ -9,6 +9,24 @@ export const productsData = [
     stock: 27
   },
   {
+    id: 12,
+    name: 'Dark Cloud',
+    category: 'Cap',
+    price: 30,
+    image: 'c.dark-cloud.jpg',
+    description: '',
+    stock: 27
+  },
+  {
+    id: 13,
+    name: 'Split Personality',
+    category: 'Cap',
+    price: 30,
+    image: 'c.split-personality.jpg',
+    description: '',
+    stock: 27
+  },
+  {
     id: 2,
     name: 'Average Runners Club',
     category: 'T-Shirt',
@@ -210,7 +228,7 @@ export const productsData = [
     id: 24,
     name: 'Apple Face',
     category: 'Tea towels',
-    price: 30,
+    price: 26,
     image: 't.apple-face.jpg',
     description: '',
     stock: 43
@@ -219,7 +237,7 @@ export const productsData = [
     id: 25,
     name: 'Cha Cha Cha',
     category: 'Tea towels',
-    price: 30,
+    price: 26,
     image: 't.cha-cha-cha.jpg',
     description: '',
     stock: 44
@@ -228,7 +246,7 @@ export const productsData = [
     id: 26,
     name: 'Human Of Many Faces',
     category: 'Tea towels',
-    price: 30,
+    price: 26,
     image: 't.human-of-many-faces.jpg',
     description: '',
     stock: 40
@@ -237,7 +255,7 @@ export const productsData = [
     id: 27,
     name: 'Make It Pop',
     category: 'Tea towels',
-    price: 30,
+    price: 26,
     image: 't.make-it-pop.jpg',
     description: '',
     stock: 19
@@ -246,7 +264,7 @@ export const productsData = [
     id: 28,
     name: "Rootin' Tootin'",
     category: 'Tea towels',
-    price: 30,
+    price: 26,
     image: 't.rootin-tootin.jpg',
     description: '',
     stock: 46
@@ -255,7 +273,7 @@ export const productsData = [
     id: 29,
     name: 'Spaghetti Alla Puttanesca',
     category: 'Tea towels',
-    price: 30,
+    price: 26,
     image: 't.spaghetti-alla-puttanesca.jpg',
     description: '',
     stock: 47
