@@ -1,6 +1,6 @@
 <template>
   <RouterLink :to="`/product/${product.id}`" :key="product.id" class="product-card">
-    <img :src="`${product.image}/300/300`" :alt="product.name" />
+    <ProductImage :url="product.image" :alt="`Image of product ${product.name}`" />
     <div class="product-info">
       <h2 data-wavy>{{ product.name }}</h2>
       <h3 class="product-price">€{{ product.price.toFixed(2) }}</h3>
@@ -10,6 +10,7 @@
 
 <script setup lang="ts">
 import type { Product } from '@/services/api/handlers'
+import ProductImage from '@/components/ProductImage.vue'
 
 defineProps<{
   product: Product

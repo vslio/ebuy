@@ -1,6 +1,6 @@
 <template>
   <div v-if="product" class="product-detail">
-    <img :src="`${product.image}/600/600`" :alt="product.name" />
+    <ProductImage :url="product.image" :alt="`Image of product ${product.name}`" />
     <div class="product-info">
       <header>
         <nav class="in-row">
@@ -13,11 +13,9 @@
         <h1>{{ product.name }}</h1>
         <h2>€{{ product.price.toFixed(2) }}</h2>
       </div>
-      <div data-skew>
-        <button @click="addToCart" :disabled="product.stock === 0">
-          {{ product.stock > 0 ? 'Add to cart' : 'Out of stock' }}
-        </button>
-      </div>
+      <button @click="addToCart" :disabled="product.stock === 0">
+        {{ product.stock > 0 ? 'Add to cart' : 'Out of stock' }}
+      </button>
       <p>{{ product.description }}</p>
     </div>
   </div>
@@ -29,6 +27,7 @@
 </template>
 
 <script setup lang="ts">
+import ProductImage from '@/components/ProductImage.vue'
 import type { Product } from '@/services/api/handlers'
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
@@ -98,7 +97,8 @@ h3 {
 
 h1 {
   margin: 0;
-  font-size: 4em;
+  font-size: 2.4em;
+  line-height: 1.15;
   font-weight: 700;
 }
 
@@ -106,7 +106,6 @@ h2 {
   margin: 0;
   font-size: 2.5em;
   font-weight: 400;
-  line-height: 1;
 }
 
 button {

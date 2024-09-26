@@ -19,7 +19,11 @@
                 </button>
               </div>
               <RouterLink :to="`/product/${item.product.id}`" class="in-row">
-                <img :src="`${item.product.image}/80/80`" :alt="item.product.name" />
+                <ProductImage
+                  :url="item.product.image"
+                  :alt="`Image of product ${item.product.name}`"
+                  class="cart-item-image"
+                />
                 <h3 data-wavy>{{ item.product.name }}</h3>
               </RouterLink>
             </div>
@@ -59,6 +63,7 @@
 </template>
 
 <script setup lang="ts">
+import ProductImage from '@/components/ProductImage.vue'
 import DeleteIcon from '@/components/icons/DeleteIcon.vue'
 import MinusIcon from '@/components/icons/MinusIcon.vue'
 import PlusIcon from '@/components/icons/PlusIcon.vue'
@@ -162,6 +167,10 @@ td {
 button {
   padding: 0;
   background-color: transparent;
+}
+
+.cart-item-image {
+  width: 80px;
 }
 
 .cart-item-quantity {
