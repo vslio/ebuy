@@ -103,7 +103,13 @@ img {
   will-change: transform;
 
   &.zoom {
-    transform: skew(4deg) scale(1.15);
+    .product-card:nth-child(odd) & {
+      transform: skew(4deg) scale(1.15);
+    }
+
+    .product-card:nth-child(even) & {
+      transform: skew(-4deg) scale(1.15);
+    }
   }
 }
 </style>
