@@ -11,7 +11,7 @@
         to="/cart"
         @animationend="animateCart = false"
       >
-        <h4 data-test-cart-item-count>{{ cartStore.count }}</h4>
+        <h4 data-test-cart-item-count>{{ cartStore.count || '' }}</h4>
         <span>
           <CartIcon />
         </span>
