@@ -21,10 +21,10 @@
   <div v-else-if="error" data-test-error class="error">
     <div>
       <img src="/icons/angry.svg" width="60" height="60" />
-      <h4>{{ error }}</h4>
+      <h2>{{ error }}</h2>
     </div>
     <RouterLink to="/?category=all&page=1" replace class="error-link">
-      <h3 data-wavy class="animate">Maybe go browse the rest of our products!</h3>
+      <h4 data-wavy class="animate">Maybe go browse the rest of our products!</h4>
     </RouterLink>
   </div>
 </template>
