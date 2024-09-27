@@ -18,8 +18,13 @@ button {
 }
 
 input[type='text'] {
+  color: var(--color-text);
   border: 0;
   background-color: transparent;
+
+  &::placeholder {
+    color: var(--color-text);
+  }
 
   &:focus {
     outline: 0;

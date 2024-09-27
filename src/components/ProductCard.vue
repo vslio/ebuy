@@ -91,7 +91,7 @@ img {
   left: 0;
   width: 100%;
   transform: skew(0deg) scale(1);
-  transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 0.7s var(--cubic-bezier);
   will-change: transform;
 
   &.zoom {

@@ -48,7 +48,7 @@ const performSearch = () => {
   display: flex;
   padding: 4px 0;
   border-bottom: 3px solid var(--color-text);
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all 0.6s var(--cubic-bezier);
 
   &.is-focussed,
   &:hover {

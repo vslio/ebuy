@@ -79,7 +79,7 @@ nav {
 h3 {
   font-family: 'Syne';
   font-variation-settings: 'wght' 800;
-  transition: font-variation-settings 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: font-variation-settings 0.4s var(--cubic-bezier);
 }
 
 .search-bar {
@@ -92,14 +92,14 @@ h3 {
   align-items: center;
   gap: 8px;
   transform: scale(1);
-  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.4s var(--cubic-bezier);
 
   &.animate {
     animation: skew-scale 0.5s ease-in-out;
   }
 
-  &:hover {
-    transform: scale(1.15);
+  &:active {
+    transform: scale(0.9);
   }
 }
 </style>

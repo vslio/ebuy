@@ -79,6 +79,7 @@ span {
 }
 
 .clear-search-term {
+  color: var(--color-stroke);
   font-family: 'Syne';
   font-variation-settings: 'wght' 700;
   font-size: 2rem;
