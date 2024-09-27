@@ -24,7 +24,7 @@
       <h4>{{ error }}</h4>
     </div>
     <RouterLink to="/?category=all&page=1" replace class="error-link">
-      <h3 data-wavy class="animate">Maybe go browse the rest of our products</h3>
+      <h3 data-wavy class="animate">Maybe go browse the rest of our products!</h3>
     </RouterLink>
   </div>
 </template>
@@ -52,7 +52,7 @@ const fetchProduct = async () => {
 
     product.value = data
   } catch (err) {
-    error.value = "We couldn't fint the product you were looking for."
+    error.value = "This one doesn't exist."
     console.error('Error fetching product', err)
   }
 }
