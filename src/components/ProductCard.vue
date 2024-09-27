@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Product } from '@/services/api/handlers'
+import type { Product, ResponseWithoutPagination } from '@/services/api/handlers'
 import ProductImage from '@/components/ProductImage.vue'
 import CartPlusIcon from '@/components/icons/CartPlusIcon.vue'
 import { ref } from 'vue'
@@ -48,7 +48,8 @@ const addToCart = async () => {
       throw new Error("Couldn't add the product to the cart")
     }
 
-    cartProduct.value = await response.json()
+    const { data } = (await response.json()) as ResponseWithoutPagination<Product>
+    cartProduct.value = data
   } catch (err) {
     console.error('Error adding the product to the cart:', err)
   }

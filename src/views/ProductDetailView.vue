@@ -29,7 +29,7 @@
 
 <script setup lang="ts">
 import ProductImage from '@/components/ProductImage.vue'
-import type { Product } from '@/services/api/handlers'
+import type { ResponseWithoutPagination, Product } from '@/services/api/handlers'
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
@@ -40,13 +40,15 @@ const error = ref<string | null>(null)
 const fetchProduct = async () => {
   const productId = route.params.id
   try {
-    const response = await fetch(`/api/products/${productId}`)
+    const response = await fetch(`/api/product/${productId}`)
 
     if (!response.ok) {
       throw new Error('Failed to fetch product')
     }
 
-    product.value = await response.json()
+    const { data } = (await response.json()) as ResponseWithoutPagination<Product>
+
+    product.value = data
   } catch (err) {
     error.value = 'Something went wrong. Please try again later.'
     console.error('Error fetching product ->', err)

@@ -32,8 +32,10 @@ const clear = () => {
 const performSearch = () => {
   if (searchQuery.value.trim()) {
     router.push({
-      path: '/search',
-      query: { term: searchQuery.value }
+      name: 'search',
+      params: {
+        term: searchQuery.value
+      }
     })
   }
 

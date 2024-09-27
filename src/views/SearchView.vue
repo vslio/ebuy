@@ -1,19 +1,23 @@
 <template>
   <div class="search-view">
-    <div>
+    <div v-if="$route.params.term">
       <span
         >You searched for it and we found {{ products.length }}
         {{ products.length === 1 ? 'result' : 'results' }}.
       </span>
       <div class="search-term-container">
         <h1 class="display" data-wavy>
-          {{ $route.query.term }}
+          {{ $route.params.term }}
         </h1>
         <RouterLink to="/?category=all&page=1" data-skew class="clear-search-term">x</RouterLink>
       </div>
     </div>
     <div v-if="products.length > 0" class="product-grid">
       <ProductCard v-for="product in products" :key="product.id" :product="product" />
+    </div>
+    <div v-else-if="errorMessage" class="text-center">
+      <img src="/icons/angry.svg" width="60" height="60" />
+      <h2>{{ errorMessage }}</h2>
     </div>
     <div v-else class="text-center">
       <img src="/icons/angry.svg" width="60" height="60" />
@@ -24,28 +28,33 @@
 
 <script setup lang="ts">
 import ProductCard from '@/components/ProductCard.vue'
-import type { Product } from '@/services/api/handlers'
+import type { ResponseWithoutPagination, Product } from '@/services/api/handlers'
 import { ref, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const products = ref<Product[]>([])
+const errorMessage = ref('')
 
 const searchProducts = async () => {
   try {
-    const response = await fetch(`/api/products/search/${route.query.term}`)
+    const response = await fetch(`/api/products/search/${route.params.term}`)
 
     if (!response.ok) {
-      throw new Error('Failed to search for products')
+      if (response.status === 400)
+        errorMessage.value = 'You need to type something up there, first.'
+      throw new Error()
     }
 
-    products.value = await response.json()
+    const { data } = (await response.json()) as ResponseWithoutPagination<Product[]>
+
+    products.value = data
   } catch (error) {
     console.error('Error searching products ->', error)
   }
 }
 
-watch(() => route.query.term, searchProducts, { immediate: true })
+watch(() => route.params.term, searchProducts, { immediate: true })
 
 onMounted(() => {
   searchProducts()

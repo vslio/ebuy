@@ -35,7 +35,7 @@ const router = createRouter({
       component: CartView
     },
     {
-      path: '/search',
+      path: '/search/:term?',
       name: 'search',
       component: SearchView
     }

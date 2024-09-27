@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import ProductCard from '@/components/ProductCard.vue'
-import type { Categories, PaginatedResponse, Product } from '@/services/api/handlers'
+import type { Categories, ResponseWithPagination, Product } from '@/services/api/handlers'
 import { ref, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
@@ -62,7 +62,7 @@ const fetchProducts = async () => {
       }
     }
 
-    const { data, pagination } = (await response.json()) as PaginatedResponse<Product>
+    const { data, pagination } = (await response.json()) as ResponseWithPagination<Product[]>
 
     products.value = data
     currentPage.value = pagination.current

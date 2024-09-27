@@ -56,7 +56,7 @@
   </div>
   <div v-else>
     <div class="cart-empty">
-      <img src="/icons/lobster.svg" width="60" height="60" />
+      <img src="/icons/crab.svg" width="60" height="60" />
       <h2>Your cart is empty &hellip;</h2>
     </div>
   </div>
@@ -67,7 +67,7 @@ import ProductImage from '@/components/ProductImage.vue'
 import DeleteIcon from '@/components/icons/DeleteIcon.vue'
 import MinusIcon from '@/components/icons/MinusIcon.vue'
 import PlusIcon from '@/components/icons/PlusIcon.vue'
-import type { CartItemWithProduct } from '@/services/api/handlers'
+import type { CartItemWithProduct, ResponseWithoutPagination } from '@/services/api/handlers'
 import { ref, onMounted } from 'vue'
 
 const cart = ref<CartItemWithProduct[]>([])
@@ -80,7 +80,8 @@ const fetchCart = async () => {
       throw new Error('Failed to fetch cart')
     }
 
-    cart.value = await response.json()
+    const { data } = (await response.json()) as ResponseWithoutPagination<CartItemWithProduct[]>
+    cart.value = data
   } catch (error) {
     console.error('Error fetching cart ->', error)
   }
@@ -103,7 +104,8 @@ const increaseItemQuantity = async (productId: number) => {
       }
     }
 
-    cart.value = await response.json()
+    const { data } = (await response.json()) as ResponseWithoutPagination<CartItemWithProduct[]>
+    cart.value = data
   } catch (err) {
     console.error('Error increasing the product quantity:', err)
   }
@@ -122,7 +124,8 @@ const decreaseItemQuantity = async (productId: number) => {
       throw new Error("Couldn't increase the item quantity")
     }
 
-    cart.value = await response.json()
+    const { data } = (await response.json()) as ResponseWithoutPagination<CartItemWithProduct[]>
+    cart.value = data
   } catch (err) {
     console.error('Error increasing the product quantity:', err)
   }
@@ -141,7 +144,8 @@ const removeFromCart = async (productId: number) => {
       throw new Error("Couldn't remove the product from the cart")
     }
 
-    cart.value = await response.json()
+    const { data } = (await response.json()) as ResponseWithoutPagination<CartItemWithProduct[]>
+    cart.value = data
   } catch (err) {
     console.error('Error removing the product from the cart:', err)
   }

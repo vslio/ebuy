@@ -19,14 +19,14 @@
     </nav>
   </header>
 
-  <router-view v-slot="{ Component, route }">
-    <transition name="fade" mode="out-in">
-      <component
+  <RouterView v-slot="{ Component, route }">
+    <Transition name="fade" mode="out-in">
+      <Component
         :is="Component"
         :key="`${route.path}${route.query?.page}${route.query?.category}`"
       />
-    </transition>
-  </router-view>
+    </Transition>
+  </RouterView>
 </template>
 
 <script setup lang="ts">
