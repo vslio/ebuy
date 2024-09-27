@@ -48,20 +48,18 @@ const products: Product[] = productsData
 let cart: CartItem[] = []
 
 function getCartWithProductDetails(): CartItemWithProduct[] {
-  return cart
-    .map((item) => {
-      const product = products.find((p) => p.id === item.productId)
+  return cart.reduce((acc: CartItemWithProduct[], item) => {
+    const product = products.find((p) => p.id === item.productId)
 
-      if (product) {
-        return {
-          product,
-          quantity: item.quantity
-        }
-      }
+    if (product) {
+      acc.push({
+        product,
+        quantity: item.quantity
+      })
+    }
 
-      return undefined
-    })
-    .filter((item) => item !== undefined)
+    return acc
+  }, [])
 }
 
 export const handlers = [
