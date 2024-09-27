@@ -25,8 +25,7 @@ afterAll(() => server.close())
 
 describe('Product Detail View', () => {
   it('renders the product details', async () => {
-    router.push('/product/1')
-
+    await router.push('/product/1')
     await router.isReady()
 
     const wrapper = mount(ProductDetailView, {
@@ -41,8 +40,7 @@ describe('Product Detail View', () => {
   })
 
   it('displays the error element if the product is not found', async () => {
-    router.push('/product/10000')
-
+    await router.push('/product/10000')
     await router.isReady()
 
     const wrapper = mount(ProductDetailView, {
@@ -51,9 +49,8 @@ describe('Product Detail View', () => {
       }
     })
 
-    await router.isReady()
     await flushPromises()
 
-    expect(wrapper.find('.product-detail [data-test-error]')).toBeDefined()
+    expect(wrapper.find('[data-test-error]').exists()).toBe(true)
   })
 })

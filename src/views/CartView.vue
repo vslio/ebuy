@@ -30,10 +30,13 @@
           </td>
           <td>
             <div class="in-row cart-item-quantity">
-              <button @click="decreaseItemQuantity(item.product.id)"><MinusIcon /></button>
-              <h3>{{ item.quantity }}</h3>
+              <button data-test-cart-item-decrement @click="decrementItemQuantity(item.product.id)">
+                <MinusIcon />
+              </button>
+              <h3 data-test-cart-item-quantity>{{ item.quantity }}</h3>
               <button
-                @click="increaseItemQuantity(item.product.id)"
+                data-test-cart-item-increment
+                @click="incrementItemQuantity(item.product.id)"
                 :disabled="item.product.stock === 0"
               >
                 <PlusIcon />
@@ -87,7 +90,7 @@ const fetchCart = async () => {
   }
 }
 
-const increaseItemQuantity = async (productId: number) => {
+const incrementItemQuantity = async (productId: number) => {
   try {
     const response = await fetch(`/api/cart/${productId}/increase`, {
       method: 'PUT',
@@ -111,7 +114,7 @@ const increaseItemQuantity = async (productId: number) => {
   }
 }
 
-const decreaseItemQuantity = async (productId: number) => {
+const decrementItemQuantity = async (productId: number) => {
   try {
     const response = await fetch(`/api/cart/${productId}/decrease`, {
       method: 'PUT',
