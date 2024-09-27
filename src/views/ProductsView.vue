@@ -6,21 +6,21 @@
       >
       <RouterLink
         data-wavy
-        :class="category === 'caps' ? 'display' : ''"
-        to="/?category=caps&page=1"
-        ><h3>Caps</h3></RouterLink
-      >
-      <RouterLink
-        data-wavy
         :class="category === 't-shirts' ? 'display' : ''"
         to="/?category=t-shirts&page=1"
-        ><h3>T-Shirts</h3></RouterLink
+        ><h3>T–Shirts</h3></RouterLink
       >
       <RouterLink
         data-wavy
         :class="category === 'tea-towels' ? 'display' : ''"
         to="/?category=tea-towels&page=1"
         ><h3>Tea Towels</h3></RouterLink
+      >
+      <RouterLink
+        data-wavy
+        :class="category === 'caps' ? 'display' : ''"
+        to="/?category=caps&page=1"
+        ><h3>Caps</h3></RouterLink
       >
     </nav>
     <div class="product-grid">
