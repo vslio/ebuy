@@ -27,7 +27,6 @@
       <h3 data-wavy class="animate">Maybe go browse the rest of our products</h3>
     </RouterLink>
   </div>
-  <div v-else class="loading">Add a loading element here</div>
 </template>
 
 <script setup lang="ts">
@@ -110,8 +109,7 @@ img {
   gap: 40px;
 }
 
-.error,
-.loading {
+.error {
   display: flex;
   flex-direction: column;
   align-items: center;
