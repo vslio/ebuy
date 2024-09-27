@@ -4,42 +4,45 @@ import ProductDetailView from '@/views/ProductDetailView.vue'
 import CartView from '@/views/CartView.vue'
 import SearchView from '@/views/SearchView.vue'
 
+export const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: ProductsView,
+    beforeEnter: [addDefaultQueryParam]
+  },
+  {
+    path: '/product/:id',
+    name: 'product',
+    component: ProductDetailView
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: CartView
+  },
+  {
+    path: '/search/:term?',
+    name: 'search',
+    component: SearchView
+  }
+]
+
 function addDefaultQueryParam(to: RouteLocation) {
   if (!Object.keys(to.query).length) {
     return {
       path: to.path,
       query: {
+        category: 'all',
         page: 1
       }
     }
   }
 }
 
-const router = createRouter({
+export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: ProductsView,
-      beforeEnter: [addDefaultQueryParam]
-    },
-    {
-      path: '/product/:id',
-      name: 'product',
-      component: ProductDetailView
-    },
-    {
-      path: '/cart',
-      name: 'cart',
-      component: CartView
-    },
-    {
-      path: '/search/:term?',
-      name: 'search',
-      component: SearchView
-    }
-  ]
+  routes
 })
 
 export default router

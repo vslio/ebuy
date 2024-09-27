@@ -27,9 +27,13 @@
       <ProductCard v-for="product in products" :key="product.id" :product="product" />
     </div>
     <div class="pagination">
-      <button @click="goToPreviousPage" :disabled="currentPage === 1">←</button>
-      <h2>Page {{ currentPage }} of {{ totalPages }}</h2>
-      <button @click="goToNextPage" :disabled="currentPage === totalPages">→</button>
+      <button data-test-button-previous @click="goToPreviousPage" :disabled="currentPage === 1">
+        ←
+      </button>
+      <h2 data-test-current-page>Page {{ currentPage }} of {{ totalPages }}</h2>
+      <button data-test-button-next @click="goToNextPage" :disabled="currentPage === totalPages">
+        →
+      </button>
     </div>
   </div>
 </template>
@@ -37,7 +41,7 @@
 <script setup lang="ts">
 import ProductCard from '@/components/ProductCard.vue'
 import type { Categories, ResponseWithPagination, Product } from '@/services/api/handlers'
-import { ref, onMounted, watch } from 'vue'
+import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
@@ -87,26 +91,17 @@ const goToNextPage = () => {
 }
 
 watch(
-  () => route.query.page,
-  (newPage) => {
-    currentPage.value = Number(newPage)
+  () => route.query,
+  (query) => {
+    currentPage.value = Number(query.page)
+    category.value = query.category as Categories
+
     fetchProducts()
   },
-  { immediate: true }
+  {
+    immediate: true
+  }
 )
-
-watch(
-  () => route.query.category,
-  (newCategory) => {
-    category.value = newCategory as Categories
-    fetchProducts()
-  },
-  { immediate: true }
-)
-
-onMounted(() => {
-  fetchProducts()
-})
 </script>
 
 <style scoped>
