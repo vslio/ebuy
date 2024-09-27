@@ -13,16 +13,19 @@
         <h1>{{ product.name }}</h1>
         <h2>€{{ product.price.toFixed(2) }}</h2>
       </div>
-      <button @click="addToCart" :disabled="product.stock === 0">
+      <button data-test-add-to-cart-button @click="addToCart" :disabled="product.stock === 0">
         {{ product.stock > 0 ? 'Add to cart' : 'Out of stock' }}
       </button>
     </div>
   </div>
-  <div v-else-if="error" class="error">
-    <router-link to="/?category=all&page=1" replace class="error-link"
-      >← View our products</router-link
-    >
-    {{ error }}
+  <div v-else-if="error" data-test-error class="error">
+    <div>
+      <img src="/icons/angry.svg" width="60" height="60" />
+      <h4>{{ error }}</h4>
+    </div>
+    <RouterLink to="/?category=all&page=1" replace class="error-link">
+      <h3 data-wavy class="animate">Maybe go browse the rest of our products</h3>
+    </RouterLink>
   </div>
   <div v-else class="loading">Add a loading element here</div>
 </template>
@@ -50,8 +53,8 @@ const fetchProduct = async () => {
 
     product.value = data
   } catch (err) {
-    error.value = 'Something went wrong. Please try again later.'
-    console.error('Error fetching product ->', err)
+    error.value = "We couldn't fint the product you were looking for."
+    console.error('Error fetching product', err)
   }
 }
 
@@ -71,13 +74,10 @@ const addToCart = async () => {
       throw new Error("Couldn't add the product to the cart")
     }
 
-    // show success toast or animate future cart icon here
-
     if (product.value) {
       product.value.stock -= 1
     }
   } catch (err) {
-    // show error toast for UX
     console.error('Error adding the product to the cart:', err)
   }
 }
@@ -114,11 +114,13 @@ img {
 .loading {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 32px;
   font-size: 1.2rem;
-}
 
-.error-link {
-  font-size: 1rem;
-  font-weight: 600;
+  span {
+    font-family: 'PPNeueMachina';
+    font-weight: 900;
+  }
 }
 </style>
