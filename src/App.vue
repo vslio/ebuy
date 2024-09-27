@@ -6,7 +6,16 @@
         <h3>e-μπάι</h3>
       </RouterLink>
       <SearchBar class="search-bar" />
-      <RouterLink class="cart-icon" to="/cart"><CartIcon /></RouterLink>
+      <RouterLink
+        :class="['cart-container', { animate: animateCart }]"
+        to="/cart"
+        @animationend="animateCart = false"
+      >
+        <h4>{{ cartStore.count }}</h4>
+        <span>
+          <CartIcon />
+        </span>
+      </RouterLink>
     </nav>
   </header>
 
@@ -23,6 +32,19 @@
 <script setup lang="ts">
 import CartIcon from '@/components/icons/CartIcon.vue'
 import SearchBar from '@/components/SearchBar.vue'
+import { useCartStore } from '@/stores/cart'
+import { ref, watch } from 'vue'
+
+const cartStore = useCartStore()
+
+const animateCart = ref(false)
+
+watch(
+  () => cartStore.count,
+  () => {
+    animateCart.value = true
+  }
+)
 </script>
 
 <style scoped>
@@ -64,12 +86,17 @@ h3 {
   justify-self: center;
 }
 
-.cart-icon {
+.cart-container {
   display: flex;
   justify-self: flex-end;
   align-items: center;
+  gap: 8px;
   transform: scale(1);
   transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+
+  &.animate {
+    animation: skew-scale 0.5s ease-in-out;
+  }
 
   &:hover {
     transform: scale(1.15);
