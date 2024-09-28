@@ -9,7 +9,7 @@ export const routes = [
     path: '/',
     name: 'home',
     component: ProductsView,
-    beforeEnter: [addDefaultQueryParam]
+    beforeEnter: [addDefaultQueryParams]
   },
   {
     path: '/product/:id',
@@ -28,7 +28,7 @@ export const routes = [
   }
 ]
 
-function addDefaultQueryParam(to: RouteLocation) {
+function addDefaultQueryParams(to: RouteLocation) {
   if (!Object.keys(to.query).length) {
     return {
       path: to.path,
