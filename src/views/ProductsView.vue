@@ -67,7 +67,7 @@ const fetchProducts = async () => {
     isLoading.value = false
 
     if (!response.ok) {
-      if (response.status === 400) {
+      if (response.status === 404) {
         router.replace(`/?category=all&page=1`)
       } else {
         throw new Error('Failed to fetch products')

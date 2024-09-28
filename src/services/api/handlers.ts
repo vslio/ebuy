@@ -82,7 +82,7 @@ export const handlers = [
       const total = Math.ceil(filteredProducts.length / productsPerPage)
 
       if (page > total) {
-        return HttpResponse.json({ error: API_ERROR_PAGE_NOT_FOUND }, { status: 400 })
+        return HttpResponse.json({ error: API_ERROR_PAGE_NOT_FOUND }, { status: 404 })
       }
 
       const response = {
