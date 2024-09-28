@@ -40,7 +40,7 @@ describe('API: Product List', () => {
     const response = await fetch('/api/products?page=999&category=all')
     const { error } = (await response.json()) as ResponseError
 
-    expect(response.status).toBe(400)
+    expect(response.status).toBe(404)
     expect(error).toBe(API_ERROR_PAGE_NOT_FOUND)
   })
 })
