@@ -13,7 +13,7 @@
         <tr v-for="item in cart" :key="item.product.id" class="cart-item">
           <td>
             <div class="in-row">
-              <div data-skew>
+              <div class="cart-item-remove-button" data-skew>
                 <button @click="removeFromCart(item.product.id)">
                   <DeleteIcon />
                 </button>
@@ -182,13 +182,49 @@ button {
   background-color: transparent;
 }
 
+.cart-item-remove-button {
+  display: none;
+
+  @media (min-width: 600px) {
+    display: block;
+  }
+}
+
 .cart-item-image {
+  display: none;
   width: 80px;
+
+  @media (min-width: 600px) {
+    display: block;
+  }
 }
 
 .cart-item-quantity {
   justify-content: center;
+  gap: 8px;
+
+  @media (min-width: 768px) {
+    gap: 20px;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+
+    @media (min-width: 768px) {
+      width: 32px;
+      height: 32px;
+    }
+  }
 }
+
+/* .cart-item-quantity {
+      gap: 8px;
+
+      svg {
+        width: 24px;
+      }
+    } */
 
 .cart-total {
   padding-right: 12px;

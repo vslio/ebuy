@@ -89,8 +89,12 @@ onMounted(() => {
 <style scoped>
 .product-detail {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  gap: 20px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
 }
 
 button {
@@ -103,10 +107,22 @@ img {
   width: 100%;
 }
 
+nav {
+  gap: 8px;
+
+  @media (min-width: 768px) {
+    gap: 20px;
+  }
+}
+
 .product-info {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 20px;
+
+  @media (min-width: 768px) {
+    gap: 32px;
+  }
 }
 
 .error {

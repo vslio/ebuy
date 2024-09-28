@@ -5,24 +5,21 @@
 @import './product.css';
 
 #app {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 2rem 4rem;
+  padding: 1rem 1rem 3rem;
   font-weight: normal;
+
+  @media (min-width: 768px) {
+    padding: 2rem 2rem 3rem;
+    gap: 32px;
+  }
 }
 
 .in-row {
   display: flex;
   align-items: center;
   gap: 20px;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.4s var(--cubic-bezier);
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }

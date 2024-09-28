@@ -68,6 +68,14 @@ const addToCart = async () => {
   flex-direction: row;
   justify-content: space-between;
 
+  h2 {
+    font-size: 1.2rem;
+
+    @media (min-width: 1024px) {
+      font-size: 1.5rem;
+    }
+  }
+
   button {
     align-self: center;
     background-color: transparent;

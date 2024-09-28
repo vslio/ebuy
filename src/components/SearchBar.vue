@@ -1,5 +1,5 @@
 <template>
-  <div data-wavy :class="`search-container ${isFocussed ? 'is-focussed animate' : ''}`">
+  <div data-wavy :class="`search-bar ${isFocussed ? 'is-focussed animate' : ''}`">
     <input
       v-model="searchQuery"
       @keyup.enter="performSearch"
@@ -10,7 +10,7 @@
       placeholder="Seek what you must"
       ref="searchInput"
     />
-    <button @click="performSearch"><SearchIcon :size="20" /></button>
+    <button @click="performSearch"><SearchIcon :size="16" /></button>
   </div>
 </template>
 
@@ -44,11 +44,19 @@ const performSearch = () => {
 </script>
 
 <style scoped>
-.search-container {
+.search-bar {
   display: flex;
+  justify-self: center;
   padding: 4px 0;
   border-bottom: 3px solid var(--color-text);
   transition: all 0.6s var(--cubic-bezier);
+
+  svg {
+    @media (min-width: 768px) {
+      width: 20px;
+      height: 20px;
+    }
+  }
 
   &.is-focussed,
   &:hover {
@@ -58,7 +66,6 @@ const performSearch = () => {
 
 input {
   font-family: 'PPNeueMachina';
-  font-size: 1rem;
   font-weight: 900;
 
   &::placeholder {

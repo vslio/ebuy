@@ -1,8 +1,8 @@
 <template>
   <header>
     <nav>
-      <RouterLink to="/?category=all&page=1" class="logo">
-        <img src="/icons/ebuy.svg" width="44" height="44" />
+      <RouterLink to="/?category=all&page=1" class="logo-container">
+        <img src="/icons/ebuy.svg" />
         <h3>e-μπάι</h3>
       </RouterLink>
       <SearchBar class="search-bar" />
@@ -13,7 +13,7 @@
       >
         <h4 data-test-cart-item-count>{{ cartStore.count || '' }}</h4>
         <span>
-          <CartIcon />
+          <CartIcon :size="28" />
         </span>
       </RouterLink>
     </nav>
@@ -51,6 +51,7 @@ watch(
 header {
   position: sticky;
   top: 0;
+  padding: 12px 0;
   background-color: var(--color-background);
   z-index: 1;
 }
@@ -58,16 +59,32 @@ header {
 nav {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 24px 0;
-  margin-bottom: 12px;
 }
 
-.logo {
+h3 {
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+  }
+}
+
+.logo-container {
   display: flex;
   gap: 12px;
   padding: 0;
   font-size: 2rem;
   line-height: 1;
+
+  img {
+    width: 28px;
+    height: 28px;
+
+    @media (min-width: 768px) {
+      width: 44px;
+      height: 44px;
+    }
+  }
 
   &:hover {
     h3 {
@@ -82,10 +99,6 @@ h3 {
   transition: font-variation-settings 0.4s var(--cubic-bezier);
 }
 
-.search-bar {
-  justify-self: center;
-}
-
 .cart-container {
   display: flex;
   justify-self: flex-end;
@@ -93,6 +106,13 @@ h3 {
   gap: 8px;
   transform: scale(1);
   transition: transform 0.4s var(--cubic-bezier);
+
+  svg {
+    @media (min-width: 768px) {
+      width: 28px;
+      height: 28px;
+    }
+  }
 
   &.animate {
     animation: skew-scale 0.5s ease-in-out;

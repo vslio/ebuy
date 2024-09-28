@@ -108,14 +108,21 @@ watch(
 .products-view {
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  padding-top: 8px;
+  gap: 12px;
+
+  @media (min-width: 768px) {
+    gap: 32px;
+  }
 }
 
 .categories {
   display: flex;
   flex-direction: row;
-  gap: 32px;
+  gap: 12px;
+
+  @media (min-width: 768px) {
+    gap: 32px;
+  }
 }
 
 .pagination {

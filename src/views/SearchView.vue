@@ -82,7 +82,11 @@ span {
   color: var(--color-button);
   font-family: 'Syne';
   font-variation-settings: 'wght' 700;
-  font-size: 2rem;
+  font-size: 1.4rem;
+
+  @media (min-width: 600px) {
+    font-size: 2rem;
+  }
 }
 
 h1 {

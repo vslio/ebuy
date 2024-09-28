@@ -1,3 +1,14 @@
+/* transition classes by vue-router */
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.4s var(--cubic-bezier);
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
 [data-wavy] {
   position: relative;
   overflow: hidden;
