@@ -23,9 +23,12 @@
         ><h3>Caps</h3></RouterLink
       >
     </nav>
-    <div class="product-grid">
-      <ProductCard v-for="product in products" :key="product.id" :product="product" />
-    </div>
+
+    <Transition name="fade" mode="out-in">
+      <div v-if="!isLoading" class="product-grid">
+        <ProductCard v-for="product in products" :key="product.id" :product="product" />
+      </div>
+    </Transition>
     <div class="pagination">
       <button data-test-button-previous @click="goToPreviousPage" :disabled="currentPage === 1">
         ←
@@ -47,6 +50,7 @@ import { useRoute, useRouter } from 'vue-router'
 const route = useRoute()
 const router = useRouter()
 
+const isLoading = ref(false)
 const products = ref<Product[]>([])
 const category = ref<Categories>('all')
 const currentPage = ref(Number(route.query?.page) || 1)
@@ -54,9 +58,13 @@ const totalPages = ref(1)
 
 const fetchProducts = async () => {
   try {
+    isLoading.value = true
+
     const response = await fetch(
       `/api/products?category=${category.value}&page=${currentPage.value}`
     )
+
+    isLoading.value = false
 
     if (!response.ok) {
       if (response.status === 400) {

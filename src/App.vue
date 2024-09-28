@@ -19,12 +19,9 @@
     </nav>
   </header>
 
-  <RouterView v-slot="{ Component, route }">
+  <RouterView v-slot="{ Component }">
     <Transition name="fade" mode="out-in">
-      <Component
-        :is="Component"
-        :key="`${route.path}${route.query?.page}${route.query?.category}`"
-      />
+      <Component :is="Component" />
     </Transition>
   </RouterView>
 </template>
