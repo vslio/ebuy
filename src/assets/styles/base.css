@@ -27,6 +27,7 @@
   --color-stroke: var(--vt-c-yellow);
 }
 
+/* Uncomment below to  enable system-specific dark mode */
 /* @media (prefers-color-scheme: dark) {
   :root {
     --color-background: var(--vt-c-black);
