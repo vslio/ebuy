@@ -19,8 +19,7 @@ bun test:unit
 ```
 
 ##### Notes
-
-I pretty much implemented everything on the list:
+I implemented everything on the list (minus a couple of optional ones):
 
 - For mocking the api server I opted to use [msw](https://mswjs.io/) for the first time. This is fantastic as it allows you to use the native `fetch` or other libraries and `msw` just intercepts the request using a service worker and returns the mock data.
 
