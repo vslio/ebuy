@@ -24,7 +24,7 @@
   --color-text: var(--vt-c-text-light-1);
   --color-button: var(--vt-c-black);
   --color-button-text: var(--vt-c-white);
-  --color-stroke: var(--vt-c-text-light-1);
+  --color-stroke: var(--vt-c-yellow);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -36,10 +36,6 @@
     --color-button-text: var(--vt-c-text-light-1);
     --color-stroke: var(--vt-c-yellow);
   }
-}
-
-.stroke-color {
-  stroke: var(--color-stroke);
 }
 
 html {

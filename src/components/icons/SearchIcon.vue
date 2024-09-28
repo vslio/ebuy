@@ -7,7 +7,6 @@
     fill="none"
   >
     <path
-      class="stroke-color"
       d="M17.5 17.5 22 22M20 11a9 9 0 1 0-18 0 9 9 0 0 0 18 0Z"
       stroke-width="3"
       stroke-linecap="round"
@@ -25,3 +24,9 @@ withDefaults(defineProps<Props>(), {
   size: 32
 })
 </script>
+
+<style scoped>
+path {
+  stroke: var(--color-button);
+}
+</style>

@@ -6,13 +6,7 @@
     viewBox="0 0 24 24"
     fill="none"
   >
-    <path
-      class="stroke-color"
-      d="M12 4v16M4 12h16"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    />
+    <path d="M12 4v16M4 12h16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
   </svg>
 </template>
 
@@ -25,3 +19,9 @@ withDefaults(defineProps<Props>(), {
   size: 32
 })
 </script>
+
+<style scoped>
+path {
+  stroke: var(--color-button);
+}
+</style>
