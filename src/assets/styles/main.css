@@ -9,11 +9,11 @@
   flex-direction: column;
   gap: 20px;
   max-width: 1280px;
-  padding: 1rem 1rem 3rem;
+  padding: 0 1rem 3rem;
   font-weight: normal;
 
   @media (min-width: 768px) {
-    padding: 2rem 2rem 3rem;
+    padding: 1rem 2rem 3rem;
     gap: 32px;
   }
 }
